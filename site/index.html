@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imersão Hora de Decolar — @eujuntomilhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde-musgo: #4F6F52;
+      --verde-salvia: #8FAF9A;
+      --terracota: #D97A3A;
+      --ambar: #E6A15A;
+      --offwhite: #F4F1EC;
+      --texto: #2C2C2C;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--offwhite);
+      color: var(--texto);
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--verde-musgo);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .tag {
+      font-family: 'Caveat', cursive;
+      color: var(--ambar);
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    header h1 {
+      font-family: 'Gabriela', serif;
+      color: var(--offwhite);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      color: var(--verde-salvia);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: var(--terracota);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 6px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .section-intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-intro h2 {
+      font-family: 'Gabriela', serif;
+      font-size: 1.5rem;
+      color: var(--verde-musgo);
+      margin-bottom: 8px;
+    }
+
+    .section-intro p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      border: 1.5px solid transparent;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      border-color: var(--terracota);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+    }
+
+    .card .number {
+      font-family: 'Caveat', cursive;
+      color: var(--terracota);
+      font-size: 0.95rem;
+    }
+
+    .card h3 {
+      font-family: 'Gabriela', serif;
+      font-size: 1.1rem;
+      color: var(--verde-musgo);
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 0.875rem;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    .card .status {
+      margin-top: auto;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--verde-salvia);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .card .status.pending {
+      color: var(--ambar);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: #999;
+      font-size: 0.85rem;
+      border-top: 1px solid #e5e1db;
+    }
+
+    footer strong {
+      color: var(--verde-musgo);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="tag">@eujuntomilhas</span>
+    <h1>Imersão Hora de Decolar</h1>
+    <p>De mulher perdida a mulher que emite. Aprenda a montar e emitir suas primeiras passagens aéreas com milhas em uma manhã.</p>
+    <span class="badge">20 de junho de 2026 · Ao vivo online</span>
+  </header>
+
+  <main>
+    <div class="section-intro">
+      <h2>Estrutura do Projeto</h2>
+      <p>Clique em cada seção para ver os detalhes</p>
+    </div>
+
+    <div class="grid">
+
+      <a href="pages/conteudo.html" class="card">
+        <span class="icon">✈️</span>
+        <span class="number">01</span>
+        <h3>Conteúdo</h3>
+        <p>Blocos da imersão, método dos 10 passos e estrutura de cada momento do evento.</p>
+        <span class="status">Definido</span>
+      </a>
+
+      <a href="pages/dia-horario.html" class="card">
+        <span class="icon">📅</span>
+        <span class="number">02</span>
+        <h3>Dia e Horário</h3>
+        <p>Data, duração, plataforma e recorrência do evento.</p>
+        <span class="status pending">Parcialmente definido</span>
+      </a>
+
+      <a href="pages/funil.html" class="card">
+        <span class="icon">🔀</span>
+        <span class="number">03</span>
+        <h3>Funil de Vendas</h3>
+        <p>Do tráfego ao follow-up: cada etapa da jornada da participante.</p>
+        <span class="status">Definido</span>
+      </a>
+
+      <a href="pages/captacao.html" class="card">
+        <span class="icon">⏳</span>
+        <span class="number">04</span>
+        <h3>Prazo de Captação</h3>
+        <p>Datas de abertura e encerramento de cada lote de inscrição.</p>
+        <span class="status pending">A definir</span>
+      </a>
+
+      <a href="pages/trafego.html" class="card">
+        <span class="icon">📣</span>
+        <span class="number">05</span>
+        <h3>Verba de Tráfego</h3>
+        <p>Investimento em Meta Ads, distribuição por lote e meta de inscritos.</p>
+        <span class="status pending">A definir</span>
+      </a>
+
+      <a href="pages/criativos.html" class="card">
+        <span class="icon">🎨</span>
+        <span class="number">06</span>
+        <h3>Criativos</h3>
+        <p>Artes, vídeos, stories e slides — para captação e para o evento ao vivo.</p>
+        <span class="status pending">A criar</span>
+      </a>
+
+      <a href="pages/pagina-vendas.html" class="card">
+        <span class="icon">🖥️</span>
+        <span class="number">07</span>
+        <h3>Página de Vendas</h3>
+        <p>Estrutura, seções, plataforma e link de pagamento por lote.</p>
+        <span class="status pending">A criar</span>
+      </a>
+
+      <a href="pages/valores.html" class="card">
+        <span class="icon">💰</span>
+        <span class="number">08</span>
+        <h3>Valores</h3>
+        <p>Preços dos lotes da imersão e valor da Mentoria de Emissões.</p>
+        <span class="status pending">Parcialmente definido</span>
+      </a>
+
+      <a href="pages/ex-alunos.html" class="card">
+        <span class="icon">🎓</span>
+        <span class="number">09</span>
+        <h3>Política de Ex-Alunos</h3>
+        <p>Condições especiais para quem já é aluna de outros produtos da Bruna.</p>
+        <span class="status pending">A definir</span>
+      </a>
+
+      <a href="pages/identidade-visual.html" class="card">
+        <span class="icon">🎯</span>
+        <span class="number">10</span>
+        <h3>Identidade Visual</h3>
+        <p>Paleta de cores, tipografia e princípios visuais da imersão.</p>
+        <span class="status">Definido</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    Projeto <strong>Imersão Hora de Decolar</strong> · Bruna Araujo Jorge · <strong>@eujuntomilhas</strong>
+  </footer>
+
+</body>
+</html>
