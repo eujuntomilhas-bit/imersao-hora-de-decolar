@@ -18,46 +18,46 @@ body {
 
 /* HEADER */
 header {
-  background-color: var(--verde-musgo);
+  background-color: var(--offwhite);
   padding: 40px 24px 36px;
+  border-bottom: 3px solid var(--verde-musgo);
 }
 
 header .back {
   display: inline-block;
-  color: var(--verde-salvia);
+  color: var(--verde-musgo);
   text-decoration: none;
   font-size: 0.875rem;
   margin-bottom: 16px;
   transition: color 0.2s;
 }
 
-header .back:hover { color: var(--offwhite); }
+header .back:hover { color: var(--terracota); }
 
 header .page-logo {
   height: 70px;
   display: block;
   margin: 0 auto 16px;
-  filter: brightness(0) invert(1);
 }
 
 header .tag {
   display: block;
   font-family: 'Caveat', cursive;
-  color: var(--ambar);
+  color: var(--terracota);
   font-size: 1.1rem;
   margin-bottom: 6px;
 }
 
 header h1 {
   font-family: 'Gabriela', serif;
-  color: var(--offwhite);
+  color: var(--verde-musgo);
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 1.2;
   margin-bottom: 10px;
 }
 
 header p {
-  color: var(--verde-salvia);
+  color: #666;
   font-size: 0.95rem;
   max-width: 560px;
   line-height: 1.6;
