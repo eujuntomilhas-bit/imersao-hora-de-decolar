@@ -56,7 +56,14 @@
     }
 
     .nav a.back:hover { color: var(--terracota); }
-    .nav img { height: 38px; }
+    .nav-logo-wrap {
+      background: var(--musgo);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo-wrap img { height: 32px; display: block; }
     .nav .tag { font-family: 'Caveat', cursive; font-size: 0.95rem; color: var(--terracota); }
 
     /* ── HERO ─────────────────────────────── */
@@ -126,10 +133,17 @@
       background: var(--ambar);
     }
 
-    .hero-logo {
-      width: 240px;
+    .hero-logo-wrap {
+      background: var(--musgo);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: inline-block;
       margin-bottom: 32px;
-      filter: brightness(0) invert(1);
+    }
+
+    .hero-logo {
+      width: 220px;
+      display: block;
     }
 
     .hero h1 {
@@ -662,8 +676,12 @@
     .lote.destaque {
       background: var(--terracota);
       border-color: var(--terracota);
-      box-shadow: 0 8px 32px rgba(217,122,58,0.3);
+      box-shadow: 0 8px 40px rgba(217,122,58,0.45);
+      transform: scale(1.06);
+      padding: 40px 24px;
     }
+
+    .lote.destaque:hover { transform: scale(1.06) translateY(-4px); }
 
     .lote-nome {
       font-size: 0.7rem;
@@ -759,7 +777,7 @@
       gap: 20px;
     }
 
-    footer img { height: 48px; filter: brightness(0) invert(1); opacity: 0.7; }
+    footer img { height: 48px; }
 
     footer p {
       font-size: 0.8rem;
@@ -823,21 +841,25 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="../index.html" class="back">← Projeto</a>
-    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" />
+    <div class="nav-logo-wrap">
+      <img src="../assets/logo.png" alt="Imersão Hora de Decolar" />
+    </div>
     <span class="tag">rascunho de copy</span>
   </nav>
 
   <!-- ═══ HERO / D1 ═══ -->
   <section class="hero">
     <div class="hero-foto">
-      <img src="../assets/fotos/passaporte.jpg" alt="Bruna Araujo com passaporte" />
+      <img src="../assets/fotos/ira.jpg" alt="Bruna no Irã" />
       <div class="hero-foto-overlay"></div>
     </div>
     <div class="hero-content">
       <span class="hero-eyebrow">@eujuntomilhas · Bruna Araujo</span>
-      <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="hero-logo" />
+      <div class="hero-logo-wrap">
+        <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="hero-logo" />
+      </div>
       <h1>Uma manhã que vai mudar<br><span>o resto da sua vida.</span></h1>
-      <h2>Descubra a forma certa de usar suas milhas<br>em todas as suas viagens.</h2>
+      <h2>Monte em uma manhã a sua viagem para qualquer lugar do mundo com milhas.</h2>
       <div class="hero-pills">
         <span class="pill pill-glass">📅 20 de junho de 2026</span>
         <span class="pill pill-glass">🕘 09h00</span>
@@ -997,7 +1019,7 @@
       <p class="d8-bio">A Imersão Hora de Decolar é exatamente isso: <strong>a forma como eu penso, em ordem, passo a passo, para você replicar sozinha.</strong></p>
     </div>
     <div class="d8-foto">
-      <img src="../assets/fotos/ira.jpg" alt="Bruna no Irã" />
+      <img src="../assets/fotos/passaporte.jpg" alt="Bruna Araujo com passaporte" />
     </div>
   </section>
 
@@ -1071,7 +1093,9 @@
   </section>
 
   <footer>
-    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" />
+    <div style="background:var(--musgo); border-radius:10px; padding:12px 16px; display:inline-block;">
+      <img src="../assets/logo.png" alt="Imersão Hora de Decolar" style="height:48px; display:block;" />
+    </div>
     <p><strong>Bruna Araujo Jorge</strong><br>@eujuntomilhas · Consultoria em Milhas Aéreas e Viagens</p>
   </footer>
 
