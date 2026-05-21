@@ -6,276 +6,588 @@
   <title>Imersão Hora de Decolar — @eujuntomilhas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Gabriela&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --verde-musgo: #4F6F52;
-      --verde-salvia: #8FAF9A;
+      --musgo: #4F6F52;
+      --salvia: #8FAF9A;
       --terracota: #D97A3A;
       --ambar: #E6A15A;
       --offwhite: #F4F1EC;
+      --creme: #EDE8DF;
       --texto: #2C2C2C;
+      --texto-suave: #6B6560;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: var(--offwhite);
+      background: var(--offwhite);
       color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
       min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
     }
 
-    header {
-      background-color: var(--offwhite);
-      padding: 48px 24px 40px;
-      text-align: center;
-      border-bottom: 3px solid var(--verde-musgo);
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(79,111,82,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(217,122,58,0.05) 0%, transparent 60%);
+      pointer-events: none;
     }
 
-    .header-logo {
-      height: 160px;
+    /* Linha decorativa vertical */
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--salvia) 30%, var(--salvia) 70%, transparent);
+      opacity: 0.4;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 80px 80px 60px;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--terracota);
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
       display: block;
-      margin: 0 auto 24px;
+      width: 32px;
+      height: 1px;
+      background: var(--terracota);
     }
 
-    header p {
-      color: #666;
-      font-size: 1rem;
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.6;
+    .hero-logo {
+      width: min(340px, 90%);
+      margin-bottom: 32px;
     }
 
-    .badge {
-      display: inline-block;
-      margin-top: 20px;
-      background-color: var(--verde-musgo);
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 6px 16px;
-      border-radius: 20px;
-      letter-spacing: 0.04em;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    .section-intro {
-      text-align: center;
+    .hero-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--texto-suave);
+      line-height: 1.7;
+      max-width: 380px;
       margin-bottom: 40px;
     }
 
-    .section-intro h2 {
-      font-family: 'Gabriela', serif;
-      font-size: 1.5rem;
-      color: var(--verde-musgo);
-      margin-bottom: 8px;
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 48px;
     }
 
-    .section-intro p {
-      color: #666;
-      font-size: 0.95rem;
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
-    .grid {
+    .pill-musgo {
+      background: var(--musgo);
+      color: #fff;
+    }
+
+    .pill-outline {
+      border: 1.5px solid var(--salvia);
+      color: var(--musgo);
+      background: transparent;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--terracota);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(217,122,58,0.25);
+    }
+
+    .hero-cta:hover {
+      background: #c16a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(217,122,58,0.35);
+    }
+
+    .hero-cta .arrow {
+      transition: transform 0.2s;
+    }
+
+    .hero-cta:hover .arrow { transform: translateX(4px); }
+
+    /* Seção direita do hero — grid de cards em miniatura */
+    .hero-right-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--terracota);
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .mini-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      max-width: 420px;
     }
 
-    .card {
+    .mini-card {
       background: #fff;
-      border-radius: 16px;
-      padding: 28px 24px;
+      border-radius: 10px;
+      padding: 18px 16px;
       text-decoration: none;
       color: inherit;
-      border: 1.5px solid transparent;
+      border: 1px solid rgba(79,111,82,0.1);
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s both;
+    }
+
+    .mini-card:nth-child(1) { animation-delay: 0.2s; }
+    .mini-card:nth-child(2) { animation-delay: 0.28s; }
+    .mini-card:nth-child(3) { animation-delay: 0.36s; }
+    .mini-card:nth-child(4) { animation-delay: 0.44s; }
+    .mini-card:nth-child(5) { animation-delay: 0.52s; }
+    .mini-card:nth-child(6) { animation-delay: 0.60s; }
+
+    .mini-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--terracota);
+      transition: width 0.3s ease;
+    }
+
+    .mini-card:hover {
+      border-color: rgba(217,122,58,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    .mini-card:hover::before { width: 100%; }
+
+    .mini-num {
+      font-family: 'Caveat', cursive;
+      font-size: 0.75rem;
+      color: var(--terracota);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .mini-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--musgo);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .mini-status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .mini-status.ok { color: var(--salvia); }
+    .mini-status.pending { color: var(--ambar); }
+
+    /* ── FAIXA CENTRAL ────────────────────────────── */
+    .faixa {
+      background: var(--musgo);
+      padding: 32px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeIn 1s 0.5s both;
+    }
+
+    .faixa-item {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      gap: 4px;
     }
 
-    .card:hover {
-      border-color: var(--terracota);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
-    }
-
-    .card .icon {
-      font-size: 1.8rem;
-    }
-
-    .card .number {
-      font-family: 'Caveat', cursive;
-      color: var(--terracota);
-      font-size: 0.95rem;
-    }
-
-    .card h3 {
-      font-family: 'Gabriela', serif;
-      font-size: 1.1rem;
-      color: var(--verde-musgo);
-      line-height: 1.3;
-    }
-
-    .card p {
-      font-size: 0.875rem;
-      color: #777;
-      line-height: 1.5;
-    }
-
-    .card .status {
-      margin-top: auto;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--verde-salvia);
+    .faixa-label {
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
+      color: var(--salvia);
+      font-weight: 600;
     }
 
-    .card .status.pending {
-      color: var(--ambar);
+    .faixa-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
     }
 
+    .faixa-sep {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── SEÇÃO PENDÊNCIAS ──────────────────────────── */
+    .section-pending {
+      padding: 80px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--musgo);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--salvia), transparent);
+    }
+
+    .pending-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pending-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #fff;
+      border-radius: 8px;
+      border-left: 3px solid var(--ambar);
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .pending-item .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ambar);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ────────────────────────────────────── */
     footer {
-      text-align: center;
-      padding: 40px 24px;
-      color: #999;
-      font-size: 0.85rem;
-      border-top: 1px solid #e5e1db;
+      background: var(--creme);
+      border-top: 1px solid rgba(79,111,82,0.15);
+      padding: 48px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
     }
 
-    .footer-logo {
-      height: 80px;
-      display: block;
-      margin: 0 auto 16px;
-      opacity: 0.85;
+    footer img {
+      height: 64px;
     }
 
-    footer strong {
-      color: var(--verde-musgo);
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-right p {
+      font-size: 0.8rem;
+      color: var(--texto-suave);
+      line-height: 1.8;
+    }
+
+    .footer-right strong {
+      color: var(--musgo);
+    }
+
+    /* ── ANIMAÇÕES ──────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVO ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero::after { display: none; }
+
+      .hero-left {
+        padding: 60px 32px 40px;
+      }
+
+      .hero-right {
+        padding: 0 32px 60px;
+        align-items: center;
+      }
+
+      .mini-grid {
+        max-width: 100%;
+      }
+
+      .faixa {
+        padding: 28px 32px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .faixa-sep { display: none; }
+
+      .section-pending {
+        padding: 60px 32px;
+      }
+
+      footer {
+        padding: 40px 32px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-right { text-align: left; }
+    }
+
+    @media (max-width: 540px) {
+      .mini-grid { grid-template-columns: 1fr; }
+      .hero-left { padding: 48px 24px 32px; }
+      .hero-right { padding: 0 24px 48px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="assets/logo.png" alt="Imersão Hora de Decolar" class="header-logo" />
-    <p>De mulher perdida a mulher que emite. Aprenda a montar e emitir suas primeiras passagens aéreas com milhas em uma manhã.</p>
-    <span class="badge">20 de junho de 2026 · 09h00 · Ao vivo no Zoom</span>
-  </header>
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
 
-  <main>
-
-    <div class="section-intro">
-      <h2>Estrutura do Projeto</h2>
-      <p>Clique em cada seção para ver os detalhes</p>
+    <div class="hero-left">
+      <span class="hero-eyebrow">Bruna Araujo · @eujuntomilhas</span>
+      <img src="assets/logo.png" alt="Imersão Hora de Decolar" class="hero-logo" />
+      <p class="hero-desc">
+        Uma manhã que vai mudar o resto da sua vida.<br>
+        Descubra a forma certa de usar suas milhas em todas as suas viagens.
+      </p>
+      <div class="hero-badges">
+        <span class="pill pill-musgo">✈ 20 de junho · 09h00</span>
+        <span class="pill pill-outline">Ao vivo no Zoom</span>
+        <span class="pill pill-outline">~3h30</span>
+      </div>
+      <a href="pages/pagina-vendas.html" class="hero-cta">
+        Ver página de vendas <span class="arrow">→</span>
+      </a>
     </div>
 
-    <div class="grid">
+    <div class="hero-right">
+      <span class="hero-right-label">Estrutura do projeto</span>
+      <div class="mini-grid">
 
-      <a href="pages/conteudo.html" class="card">
-        <span class="icon">✈️</span>
-        <span class="number">01</span>
-        <h3>Conteúdo</h3>
-        <p>Blocos da imersão, Método Mapa da Sua Viagem e estrutura de cada momento do evento.</p>
-        <span class="status">Definido</span>
-      </a>
+        <a href="pages/conteudo.html" class="mini-card">
+          <span class="mini-num">01</span>
+          <div class="mini-title">Conteúdo</div>
+          <span class="mini-status ok">Definido</span>
+        </a>
 
-      <a href="pages/dia-horario.html" class="card">
-        <span class="icon">📅</span>
-        <span class="number">02</span>
-        <h3>Dia e Horário</h3>
-        <p>20/06 às 09h00 · Zoom · Recorrência mensal.</p>
-        <span class="status">Definido</span>
-      </a>
+        <a href="pages/dia-horario.html" class="mini-card">
+          <span class="mini-num">02</span>
+          <div class="mini-title">Dia e Horário</div>
+          <span class="mini-status ok">Definido</span>
+        </a>
 
-      <a href="pages/funil.html" class="card">
-        <span class="icon">🔀</span>
-        <span class="number">03</span>
-        <h3>Funil de Vendas</h3>
-        <p>Do tráfego ao follow-up: cada etapa da jornada da participante.</p>
-        <span class="status">Definido</span>
-      </a>
+        <a href="pages/funil.html" class="mini-card">
+          <span class="mini-num">03</span>
+          <div class="mini-title">Funil de Vendas</div>
+          <span class="mini-status ok">Definido</span>
+        </a>
 
-      <a href="pages/captacao.html" class="card">
-        <span class="icon">⏳</span>
-        <span class="number">04</span>
-        <h3>Prazo de Captação</h3>
-        <p>Lote 1: 27/05 · Lote 2: 07/06 · Lote 3: 14/06.</p>
-        <span class="status">Definido</span>
-      </a>
+        <a href="pages/captacao.html" class="mini-card">
+          <span class="mini-num">04</span>
+          <div class="mini-title">Captação</div>
+          <span class="mini-status ok">Definido</span>
+        </a>
 
-      <a href="pages/trafego.html" class="card">
-        <span class="icon">📣</span>
-        <span class="number">05</span>
-        <h3>Verba de Tráfego</h3>
-        <p>R$ 1.000,00 em Meta Ads. Distribuição por lote a definir.</p>
-        <span class="status pending">Parcialmente definido</span>
-      </a>
+        <a href="pages/trafego.html" class="mini-card">
+          <span class="mini-num">05</span>
+          <div class="mini-title">Verba de Tráfego</div>
+          <span class="mini-status pending">Parcial</span>
+        </a>
 
-      <a href="pages/criativos.html" class="card">
-        <span class="icon">🎨</span>
-        <span class="number">06</span>
-        <h3>Criativos</h3>
-        <p>Artes, vídeos, stories e slides — para captação e para o evento ao vivo.</p>
-        <span class="status pending">A criar</span>
-      </a>
+        <a href="pages/criativos.html" class="mini-card">
+          <span class="mini-num">06</span>
+          <div class="mini-title">Criativos</div>
+          <span class="mini-status pending">A criar</span>
+        </a>
 
-      <a href="pages/pagina-vendas.html" class="card">
-        <span class="icon">🖥️</span>
-        <span class="number">07</span>
-        <h3>Página de Vendas</h3>
-        <p>Kiwify — estrutura, seções e link de pagamento por lote.</p>
-        <span class="status pending">A criar</span>
-      </a>
+        <a href="pages/pagina-vendas.html" class="mini-card">
+          <span class="mini-num">07</span>
+          <div class="mini-title">Página de Vendas</div>
+          <span class="mini-status pending">Em construção</span>
+        </a>
 
-      <a href="pages/valores.html" class="card">
-        <span class="icon">💰</span>
-        <span class="number">08</span>
-        <h3>Valores</h3>
-        <p>Imersão: R$37 / R$57 / R$97. Mentoria: R$ 1.997,00 (1º ciclo).</p>
-        <span class="status pending">Parcialmente definido</span>
-      </a>
+        <a href="pages/valores.html" class="mini-card">
+          <span class="mini-num">08</span>
+          <div class="mini-title">Valores</div>
+          <span class="mini-status pending">Parcial</span>
+        </a>
 
-      <a href="pages/ex-alunos.html" class="card">
-        <span class="icon">🎓</span>
-        <span class="number">09</span>
-        <h3>Política de Ex-Alunos</h3>
-        <p>Alunas do Mapa da Sua Viagem ganham acesso gratuito via convite WhatsApp.</p>
-        <span class="status">Definido</span>
-      </a>
+        <a href="pages/ex-alunos.html" class="mini-card">
+          <span class="mini-num">09</span>
+          <div class="mini-title">Ex-Alunos</div>
+          <span class="mini-status ok">Definido</span>
+        </a>
 
-      <a href="pages/identidade-visual.html" class="card">
-        <span class="icon">🎯</span>
-        <span class="number">10</span>
-        <h3>Identidade Visual</h3>
-        <p>Paleta de cores, tipografia e princípios visuais da imersão.</p>
-        <span class="status">Definido</span>
-      </a>
+        <a href="pages/identidade-visual.html" class="mini-card">
+          <span class="mini-num">10</span>
+          <div class="mini-title">Identidade Visual</div>
+          <span class="mini-status ok">Definido</span>
+        </a>
 
-      <a href="pages/cronograma.html" class="card">
-        <span class="icon">🗓️</span>
-        <span class="number">11</span>
-        <h3>Cronograma</h3>
-        <p>Etapas e prazos para subir a imersão na Kiwify e lançar o produto.</p>
-        <span class="status pending">Em construção</span>
-      </a>
+        <a href="pages/cronograma.html" class="mini-card">
+          <span class="mini-num">11</span>
+          <div class="mini-title">Cronograma</div>
+          <span class="mini-status pending">Em andamento</span>
+        </a>
 
+      </div>
     </div>
-  </main>
 
+  </section>
+
+  <!-- ═══════ FAIXA ═══════ -->
+  <div class="faixa">
+    <div class="faixa-item">
+      <span class="faixa-label">Data</span>
+      <span class="faixa-value">20 de junho de 2026</span>
+    </div>
+    <div class="faixa-sep"></div>
+    <div class="faixa-item">
+      <span class="faixa-label">Horário</span>
+      <span class="faixa-value">09h00 — manhã</span>
+    </div>
+    <div class="faixa-sep"></div>
+    <div class="faixa-item">
+      <span class="faixa-label">Plataforma</span>
+      <span class="faixa-value">Zoom · ao vivo</span>
+    </div>
+    <div class="faixa-sep"></div>
+    <div class="faixa-item">
+      <span class="faixa-label">Lote 1 abre</span>
+      <span class="faixa-value">27 de maio · R$ 37</span>
+    </div>
+    <div class="faixa-sep"></div>
+    <div class="faixa-item">
+      <span class="faixa-label">Vendas</span>
+      <span class="faixa-value">Kiwify</span>
+    </div>
+  </div>
+
+  <!-- ═══════ PENDÊNCIAS ═══════ -->
+  <section class="section-pending">
+    <div class="section-header">
+      <h2 class="section-title">Próximas definições</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="pending-list">
+      <div class="pending-item"><div class="dot"></div>Nome e condições especiais da Mentoria de Emissões</div>
+      <div class="pending-item"><div class="dot"></div>Distribuição da verba de tráfego por lote</div>
+      <div class="pending-item"><div class="dot"></div>Criação dos criativos — feed, stories, Meta Ads</div>
+      <div class="pending-item"><div class="dot"></div>Configuração do produto na Kiwify + página de obrigado</div>
+      <div class="pending-item"><div class="dot"></div>Foto da Bruna para a página de vendas</div>
+      <div class="pending-item"><div class="dot"></div>Bônus e garantia da imersão</div>
+      <div class="pending-item"><div class="dot"></div>Formulário de pesquisa pós-inscrição</div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
   <footer>
-    <img src="assets/logo.png" alt="Imersão Hora de Decolar" class="footer-logo" />
-    <p>Bruna Araujo Jorge · <strong>@eujuntomilhas</strong></p>
+    <img src="assets/logo.png" alt="Imersão Hora de Decolar" />
+    <div class="footer-right">
+      <p><strong>Bruna Araujo Jorge</strong></p>
+      <p>@eujuntomilhas · Consultoria em Milhas Aéreas e Viagens</p>
+      <p style="margin-top:8px; font-size:0.72rem; opacity:0.6;">Documento interno do projeto · 2026</p>
+    </div>
   </footer>
 
 </body>
