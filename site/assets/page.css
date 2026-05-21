@@ -27,11 +27,18 @@ header .back {
   color: var(--verde-salvia);
   text-decoration: none;
   font-size: 0.875rem;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   transition: color 0.2s;
 }
 
 header .back:hover { color: var(--offwhite); }
+
+header .page-logo {
+  height: 70px;
+  display: block;
+  margin: 0 auto 16px;
+  filter: brightness(0) invert(1);
+}
 
 header .tag {
   display: block;
@@ -54,6 +61,14 @@ header p {
   font-size: 0.95rem;
   max-width: 560px;
   line-height: 1.6;
+}
+
+/* FOOTER LOGO */
+.footer-logo {
+  height: 60px;
+  display: block;
+  margin: 0 auto 12px;
+  opacity: 0.6;
 }
 
 /* MAIN */

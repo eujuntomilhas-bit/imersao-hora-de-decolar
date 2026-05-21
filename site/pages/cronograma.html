@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cronograma — Imersão Hora de Decolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/page.css" />
+  <style>
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+
+    .tl-item {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .tl-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 51px;
+      top: 44px;
+      bottom: -1px;
+      width: 2px;
+      background: #e5e1db;
+    }
+
+    .tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 104px;
+    }
+
+    .tl-date {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--terracota);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .tl-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--verde-musgo);
+      border: 3px solid var(--offwhite);
+      box-shadow: 0 0 0 2px var(--verde-musgo);
+      flex-shrink: 0;
+    }
+
+    .tl-dot.pending {
+      background: var(--ambar);
+      box-shadow: 0 0 0 2px var(--ambar);
+    }
+
+    .tl-body {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 22px;
+      flex: 1;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .tl-body h3 {
+      font-family: 'Gabriela', serif;
+      color: var(--verde-musgo);
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .tl-body p {
+      font-size: 0.875rem;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    .tl-body ul {
+      margin-top: 8px;
+      padding-left: 16px;
+    }
+
+    .tl-body ul li {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .tl-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tl-tag.ok { background: #e8f3ea; color: var(--verde-musgo); }
+    .tl-tag.warn { background: #fef3e8; color: var(--terracota); }
+    .tl-tag.info { background: #f0f5f1; color: #666; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="back">← Voltar ao início</a>
+    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" style="height:90px; display:block; margin: 12px auto 0; filter: brightness(0) invert(1);" />
+    <span class="tag" style="margin-top:16px;">11 — Cronograma</span>
+    <h1>Cronograma</h1>
+    <p>Etapas e prazos para subir a imersão na Kiwify e lançar o produto.</p>
+  </header>
+
+  <main>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">21–26<br>maio</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag ok">Agora</span>
+          <h3>Preparação do produto na Kiwify</h3>
+          <ul>
+            <li>Criar conta / acessar Kiwify</li>
+            <li>Cadastrar a imersão como produto (evento ao vivo)</li>
+            <li>Configurar os 3 lotes com preços e datas</li>
+            <li>Definir página de obrigado com link do grupo WhatsApp</li>
+            <li>Testar fluxo de compra</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">21–26<br>maio</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag ok">Agora</span>
+          <h3>Página de vendas</h3>
+          <ul>
+            <li>Escrever copy (headline, promessa, para quem é, o que vai aprender)</li>
+            <li>Montar a página na Kiwify</li>
+            <li>Adicionar seção Sobre a Bruna + depoimentos + FAQ</li>
+            <li>Revisar e publicar</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">21–26<br>maio</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag ok">Agora</span>
+          <h3>Criativos de captação</h3>
+          <ul>
+            <li>Arte de lançamento (feed)</li>
+            <li>Vídeo de convite — Bruna fala</li>
+            <li>Artes de lote (abertura e encerramento)</li>
+            <li>Criativo pago estático e vídeo para Meta Ads</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">21–26<br>maio</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag ok">Agora</span>
+          <h3>Convite para ex-alunas do Mapa da Sua Viagem</h3>
+          <ul>
+            <li>Redigir mensagem de convite no WhatsApp</li>
+            <li>Enviar para lista de alunas com link de acesso gratuito</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">27<br>maio</span>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag warn">Lote 1 abre</span>
+          <h3>Abertura das inscrições — Lote 1 (R$ 37,00)</h3>
+          <ul>
+            <li>Publicar post de lançamento no Instagram</li>
+            <li>Subir campanha no Meta Ads</li>
+            <li>Enviar para lista de WhatsApp e interessados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">06<br>junho</span>
+          <div class="tl-dot pending"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag warn">Lote 1 fecha</span>
+          <h3>Encerramento Lote 1 — virada para Lote 2 (R$ 57,00)</h3>
+          <ul>
+            <li>Post de encerramento de lote</li>
+            <li>Atualizar campanha no Meta Ads</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">13<br>junho</span>
+          <div class="tl-dot pending"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag warn">Lote 2 fecha</span>
+          <h3>Encerramento Lote 2 — virada para Lote 3 (R$ 97,00)</h3>
+          <ul>
+            <li>Post de encerramento de lote</li>
+            <li>Última chance — urgência real</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">14–19<br>junho</span>
+          <div class="tl-dot pending"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag info">Pré-evento</span>
+          <h3>Aquecimento no grupo WhatsApp</h3>
+          <ul>
+            <li>Enviar materiais preparatórios</li>
+            <li>Lembretes de data e horário</li>
+            <li>Gerar antecipação e engajamento</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">20<br>junho</span>
+          <div class="tl-dot pending"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag warn">Dia do evento</span>
+          <h3>Imersão Hora de Decolar — ao vivo 09h00</h3>
+          <ul>
+            <li>Zoom aberto 15 min antes</li>
+            <li>Evento ~3h30</li>
+            <li>Pitch da mentoria no último bloco</li>
+            <li>Link de pagamento aberto no chat</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <span class="tl-date">20–22<br>junho</span>
+          <div class="tl-dot pending"></div>
+        </div>
+        <div class="tl-body">
+          <span class="tl-tag info">Pós-evento</span>
+          <h3>Follow-up via WhatsApp</h3>
+          <ul>
+            <li>Mensagem para quem participou e não comprou a mentoria</li>
+            <li>Depoimentos e prints de resultado</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" style="height:60px; display:block; margin: 0 auto 12px; opacity:0.6;" />
+    Imersão Hora de Decolar · <strong>@eujuntomilhas</strong>
+  </footer>
+
+</body>
+</html>

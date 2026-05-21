@@ -32,20 +32,11 @@
       text-align: center;
     }
 
-    header .tag {
-      font-family: 'Caveat', cursive;
-      color: var(--ambar);
-      font-size: 1.2rem;
-      margin-bottom: 8px;
+    .header-logo {
+      height: 140px;
       display: block;
-    }
-
-    header h1 {
-      font-family: 'Gabriela', serif;
-      color: var(--offwhite);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      line-height: 1.15;
-      margin-bottom: 12px;
+      margin: 0 auto 24px;
+      filter: brightness(0) invert(1);
     }
 
     header p {
@@ -156,10 +147,17 @@
 
     footer {
       text-align: center;
-      padding: 32px 24px;
+      padding: 40px 24px;
       color: #999;
       font-size: 0.85rem;
       border-top: 1px solid #e5e1db;
+    }
+
+    .footer-logo {
+      height: 80px;
+      display: block;
+      margin: 0 auto 16px;
+      opacity: 0.7;
     }
 
     footer strong {
@@ -170,13 +168,13 @@
 <body>
 
   <header>
-    <span class="tag">@eujuntomilhas</span>
-    <h1>Imersão Hora de Decolar</h1>
+    <img src="assets/logo.png" alt="Imersão Hora de Decolar" class="header-logo" />
     <p>De mulher perdida a mulher que emite. Aprenda a montar e emitir suas primeiras passagens aéreas com milhas em uma manhã.</p>
-    <span class="badge">20 de junho de 2026 · Ao vivo online</span>
+    <span class="badge">20 de junho de 2026 · 09h00 · Ao vivo no Zoom</span>
   </header>
 
   <main>
+
     <div class="section-intro">
       <h2>Estrutura do Projeto</h2>
       <p>Clique em cada seção para ver os detalhes</p>
@@ -188,7 +186,7 @@
         <span class="icon">✈️</span>
         <span class="number">01</span>
         <h3>Conteúdo</h3>
-        <p>Blocos da imersão, método dos 10 passos e estrutura de cada momento do evento.</p>
+        <p>Blocos da imersão, Método Mapa da Sua Viagem e estrutura de cada momento do evento.</p>
         <span class="status">Definido</span>
       </a>
 
@@ -196,8 +194,8 @@
         <span class="icon">📅</span>
         <span class="number">02</span>
         <h3>Dia e Horário</h3>
-        <p>Data, duração, plataforma e recorrência do evento.</p>
-        <span class="status pending">Parcialmente definido</span>
+        <p>20/06 às 09h00 · Zoom · Recorrência mensal.</p>
+        <span class="status">Definido</span>
       </a>
 
       <a href="pages/funil.html" class="card">
@@ -212,16 +210,16 @@
         <span class="icon">⏳</span>
         <span class="number">04</span>
         <h3>Prazo de Captação</h3>
-        <p>Datas de abertura e encerramento de cada lote de inscrição.</p>
-        <span class="status pending">A definir</span>
+        <p>Lote 1: 27/05 · Lote 2: 07/06 · Lote 3: 14/06.</p>
+        <span class="status">Definido</span>
       </a>
 
       <a href="pages/trafego.html" class="card">
         <span class="icon">📣</span>
         <span class="number">05</span>
         <h3>Verba de Tráfego</h3>
-        <p>Investimento em Meta Ads, distribuição por lote e meta de inscritos.</p>
-        <span class="status pending">A definir</span>
+        <p>R$ 1.000,00 em Meta Ads. Distribuição por lote a definir.</p>
+        <span class="status pending">Parcialmente definido</span>
       </a>
 
       <a href="pages/criativos.html" class="card">
@@ -236,7 +234,7 @@
         <span class="icon">🖥️</span>
         <span class="number">07</span>
         <h3>Página de Vendas</h3>
-        <p>Estrutura, seções, plataforma e link de pagamento por lote.</p>
+        <p>Kiwify — estrutura, seções e link de pagamento por lote.</p>
         <span class="status pending">A criar</span>
       </a>
 
@@ -244,7 +242,7 @@
         <span class="icon">💰</span>
         <span class="number">08</span>
         <h3>Valores</h3>
-        <p>Preços dos lotes da imersão e valor da Mentoria de Emissões.</p>
+        <p>Imersão: R$37 / R$57 / R$97. Mentoria: R$ 1.997,00 (1º ciclo).</p>
         <span class="status pending">Parcialmente definido</span>
       </a>
 
@@ -252,8 +250,8 @@
         <span class="icon">🎓</span>
         <span class="number">09</span>
         <h3>Política de Ex-Alunos</h3>
-        <p>Condições especiais para quem já é aluna de outros produtos da Bruna.</p>
-        <span class="status pending">A definir</span>
+        <p>Alunas do Mapa da Sua Viagem ganham acesso gratuito via convite WhatsApp.</p>
+        <span class="status">Definido</span>
       </a>
 
       <a href="pages/identidade-visual.html" class="card">
@@ -264,11 +262,20 @@
         <span class="status">Definido</span>
       </a>
 
+      <a href="pages/cronograma.html" class="card">
+        <span class="icon">🗓️</span>
+        <span class="number">11</span>
+        <h3>Cronograma</h3>
+        <p>Etapas e prazos para subir a imersão na Kiwify e lançar o produto.</p>
+        <span class="status pending">Em construção</span>
+      </a>
+
     </div>
   </main>
 
   <footer>
-    Projeto <strong>Imersão Hora de Decolar</strong> · Bruna Araujo Jorge · <strong>@eujuntomilhas</strong>
+    <img src="assets/logo.png" alt="Imersão Hora de Decolar" class="footer-logo" />
+    <p>Bruna Araujo Jorge · <strong>@eujuntomilhas</strong></p>
   </footer>
 
 </body>
