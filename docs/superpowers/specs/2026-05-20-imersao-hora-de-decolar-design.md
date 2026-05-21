@@ -216,6 +216,14 @@ FOLLOW-UP VIA WHATSAPP
 
 ---
 
+## Formulário de Pesquisa Pós-Inscrição
+
+**Link:** https://forms.gle/wvsk6Qnbokn3mXqx6  
+**Quando:** enviado para quem se inscrever na imersão (via grupo WhatsApp ou página de obrigado)  
+**Objetivo:** coletar perfil, dores e expectativas das inscritas para personalizar a entrega
+
+---
+
 ## Pendências Principais
 
 - [ ] Definir horário da imersão (manhã — qual horário exato?)

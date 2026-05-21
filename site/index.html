@@ -255,6 +255,25 @@
     .mini-status.ok { color: var(--salvia); }
     .mini-status.pending { color: var(--ambar); }
 
+    /* Barra de progresso */
+    .progress-wrap {
+      margin-top: 8px;
+      background: rgba(79,111,82,0.1);
+      border-radius: 100px;
+      height: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 100px;
+      background: var(--salvia);
+      transition: width 1s ease;
+    }
+
+    .progress-bar.full { background: var(--musgo); }
+    .progress-bar.low  { background: var(--ambar); }
+
     /* ── FAIXA CENTRAL ────────────────────────────── */
     .faixa {
       background: var(--musgo);
@@ -467,67 +486,85 @@
         <a href="pages/conteudo.html" class="mini-card">
           <span class="mini-num">01</span>
           <div class="mini-title">Conteúdo</div>
-          <span class="mini-status ok">Definido</span>
+          <span class="mini-status ok">90%</span>
+          <div class="progress-wrap"><div class="progress-bar" style="width:90%"></div></div>
         </a>
 
         <a href="pages/dia-horario.html" class="mini-card">
           <span class="mini-num">02</span>
           <div class="mini-title">Dia e Horário</div>
-          <span class="mini-status ok">Definido</span>
+          <span class="mini-status ok">85%</span>
+          <div class="progress-wrap"><div class="progress-bar" style="width:85%"></div></div>
         </a>
 
         <a href="pages/funil.html" class="mini-card">
           <span class="mini-num">03</span>
           <div class="mini-title">Funil de Vendas</div>
-          <span class="mini-status ok">Definido</span>
+          <span class="mini-status ok">100%</span>
+          <div class="progress-wrap"><div class="progress-bar full" style="width:100%"></div></div>
         </a>
 
         <a href="pages/captacao.html" class="mini-card">
           <span class="mini-num">04</span>
           <div class="mini-title">Captação</div>
-          <span class="mini-status ok">Definido</span>
+          <span class="mini-status ok">100%</span>
+          <div class="progress-wrap"><div class="progress-bar full" style="width:100%"></div></div>
         </a>
 
         <a href="pages/trafego.html" class="mini-card">
           <span class="mini-num">05</span>
           <div class="mini-title">Verba de Tráfego</div>
-          <span class="mini-status pending">Parcial</span>
+          <span class="mini-status pending">40%</span>
+          <div class="progress-wrap"><div class="progress-bar low" style="width:40%"></div></div>
         </a>
 
         <a href="pages/criativos.html" class="mini-card">
           <span class="mini-num">06</span>
           <div class="mini-title">Criativos</div>
-          <span class="mini-status pending">A criar</span>
+          <span class="mini-status pending">5%</span>
+          <div class="progress-wrap"><div class="progress-bar low" style="width:5%"></div></div>
         </a>
 
         <a href="pages/pagina-vendas.html" class="mini-card">
           <span class="mini-num">07</span>
           <div class="mini-title">Página de Vendas</div>
-          <span class="mini-status pending">Em construção</span>
+          <span class="mini-status pending">60%</span>
+          <div class="progress-wrap"><div class="progress-bar low" style="width:60%"></div></div>
         </a>
 
         <a href="pages/valores.html" class="mini-card">
           <span class="mini-num">08</span>
           <div class="mini-title">Valores</div>
-          <span class="mini-status pending">Parcial</span>
+          <span class="mini-status pending">70%</span>
+          <div class="progress-wrap"><div class="progress-bar" style="width:70%"></div></div>
         </a>
 
         <a href="pages/ex-alunos.html" class="mini-card">
           <span class="mini-num">09</span>
           <div class="mini-title">Ex-Alunos</div>
-          <span class="mini-status ok">Definido</span>
+          <span class="mini-status ok">90%</span>
+          <div class="progress-wrap"><div class="progress-bar" style="width:90%"></div></div>
         </a>
 
         <a href="pages/identidade-visual.html" class="mini-card">
           <span class="mini-num">10</span>
           <div class="mini-title">Identidade Visual</div>
-          <span class="mini-status ok">Definido</span>
+          <span class="mini-status ok">100%</span>
+          <div class="progress-wrap"><div class="progress-bar full" style="width:100%"></div></div>
         </a>
 
         <a href="pages/cronograma.html" class="mini-card">
           <span class="mini-num">11</span>
           <div class="mini-title">Cronograma</div>
-          <span class="mini-status pending">Em andamento</span>
+          <span class="mini-status pending">70%</span>
+          <div class="progress-wrap"><div class="progress-bar" style="width:70%"></div></div>
+        </a>
+
+        <a href="https://forms.gle/wvsk6Qnbokn3mXqx6" target="_blank" class="mini-card">
+          <span class="mini-num">12</span>
+          <div class="mini-title">Formulário de Pesquisa</div>
+          <span class="mini-status ok">80%</span>
+          <div class="progress-wrap"><div class="progress-bar" style="width:80%"></div></div>
         </a>
 
       </div>
