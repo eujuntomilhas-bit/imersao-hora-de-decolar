@@ -199,6 +199,46 @@
     .btn .arr { transition: transform 0.2s; }
     .btn:hover .arr { transform: translateX(5px); }
 
+    /* Botão hero — destaque extra com brilho pulsante */
+    .btn-hero {
+      font-size: 1rem;
+      padding: 20px 48px;
+      border-radius: 4px;
+      background: #E8622A;
+      box-shadow: 0 0 0 0 rgba(232,98,42,0.7), 0 8px 32px rgba(232,98,42,0.55);
+      animation: pulse-glow 2s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hero::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: rgba(255,255,255,0.18);
+      transform: skewX(-20deg);
+      animation: shine 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,98,42,0.6), 0 8px 32px rgba(232,98,42,0.5); }
+      50%       { box-shadow: 0 0 0 10px rgba(232,98,42,0), 0 12px 40px rgba(232,98,42,0.7); }
+    }
+
+    @keyframes shine {
+      0%   { left: -60%; }
+      40%, 100% { left: 130%; }
+    }
+
+    .btn-hero:hover {
+      background: #c84f1e;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 0 6px rgba(232,98,42,0.25), 0 16px 48px rgba(232,98,42,0.6);
+    }
+
     /* ── SEÇÃO BASE ───────────────────────── */
     .sec { padding: 72px 40px; }
 
@@ -724,7 +764,7 @@
         <span class="pill pill-glass">💻 Zoom ao vivo</span>
         <span class="pill pill-glass">⏱ ~3h30</span>
       </div>
-      <a href="#preco" class="btn">Quero minha vaga <span class="arr">→</span></a>
+      <a href="https://pay.kiwify.com.br/abdjXts" class="btn btn-hero">Quero minha vaga <span class="arr">→</span></a>
     </div>
   </section>
 
@@ -909,7 +949,7 @@
         <div class="valor"><sup>R$</sup>37</div>
         <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
       </div>
-      <a href="#" class="btn">Quero garantir a minha viagem <span class="arr">→</span></a>
+      <a href="https://pay.kiwify.com.br/abdjXts" class="btn">Quero garantir a minha viagem <span class="arr">→</span></a>
     </div>
   </section>
 

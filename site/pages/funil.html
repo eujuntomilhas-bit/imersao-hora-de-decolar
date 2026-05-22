@@ -8,6 +8,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/page.css" />
+  <style>
+    .funnel-step {
+      position: relative;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, opacity 0.25s;
+      user-select: none;
+    }
+
+    .funnel-step.done {
+      background: #e8f3ea;
+      border-color: var(--verde-musgo) !important;
+      opacity: 0.75;
+    }
+
+    .funnel-step.done .funnel-content h3 {
+      text-decoration: line-through;
+      color: #7aaa7e;
+    }
+
+    .funnel-step.done .funnel-content p {
+      color: #aaa;
+    }
+
+    .step-check {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .funnel-step.done .step-check {
+      background: var(--verde-musgo);
+      border-color: var(--verde-musgo);
+    }
+
+    .step-check svg {
+      display: none;
+    }
+
+    .funnel-step.done .step-check svg {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -23,7 +73,8 @@
 
     <div class="funnel">
 
-      <div class="funnel-step">
+      <div class="funnel-step" data-step="0">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">📣</div>
         <div class="funnel-content">
           <h3>Tráfego</h3>
@@ -32,7 +83,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step">
+      <div class="funnel-step" data-step="1">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">🖥️</div>
         <div class="funnel-content">
           <h3>Página de Vendas da Imersão</h3>
@@ -41,7 +93,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step">
+      <div class="funnel-step" data-step="2">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">✅</div>
         <div class="funnel-content">
           <h3>Página de Obrigado</h3>
@@ -50,7 +103,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step">
+      <div class="funnel-step" data-step="3">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">💬</div>
         <div class="funnel-content">
           <h3>Grupo de WhatsApp</h3>
@@ -59,7 +113,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step highlight">
+      <div class="funnel-step highlight" data-step="4">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">✈️</div>
         <div class="funnel-content">
           <h3>Ao vivo — Imersão Hora de Decolar</h3>
@@ -68,7 +123,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step pitch">
+      <div class="funnel-step pitch" data-step="5">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">🎯</div>
         <div class="funnel-content">
           <h3>Pitch da Mentoria de Emissões</h3>
@@ -77,7 +133,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step">
+      <div class="funnel-step" data-step="6">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">🖥️</div>
         <div class="funnel-content">
           <h3>Página de Vendas da Mentoria</h3>
@@ -86,7 +143,8 @@
       </div>
       <div class="funnel-arrow">↓</div>
 
-      <div class="funnel-step">
+      <div class="funnel-step" data-step="7">
+        <div class="step-check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-icon">📲</div>
         <div class="funnel-content">
           <h3>Follow-up via WhatsApp</h3>
@@ -107,6 +165,35 @@
     Imersão Hora de Decolar · <strong>@eujuntomilhas</strong>
   </footer>
 
+  <script>
+    const STORAGE_KEY = 'funil_done';
+
+    function saveState() {
+      const done = [];
+      document.querySelectorAll('.funnel-step').forEach(el => {
+        done.push(el.classList.contains('done'));
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(done));
+    }
+
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      JSON.parse(saved).forEach((isDone, i) => {
+        const el = document.querySelector(`.funnel-step[data-step="${i}"]`);
+        if (el && isDone) el.classList.add('done');
+      });
+    }
+
+    document.querySelectorAll('.funnel-step').forEach(el => {
+      el.addEventListener('click', () => {
+        el.classList.toggle('done');
+        saveState();
+      });
+    });
+
+    loadState();
+  </script>
 </body>
 </html>
 
