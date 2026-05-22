@@ -356,6 +356,20 @@
       border-left: 3px solid var(--ambar);
       font-size: 0.9rem;
       color: #555;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      user-select: none;
+    }
+
+    .pending-item.done {
+      background: #f0f7f1;
+      border-left-color: var(--musgo);
+      opacity: 0.6;
+    }
+
+    .pending-item.done .item-text {
+      text-decoration: line-through;
+      color: #aaa;
     }
 
     .pending-item .dot {
@@ -365,6 +379,27 @@
       background: var(--ambar);
       flex-shrink: 0;
     }
+
+    .item-check {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .pending-item.done .item-check {
+      background: var(--musgo);
+      border-color: var(--musgo);
+    }
+
+    .item-check svg { display: none; }
+    .pending-item.done .item-check svg { display: block; }
 
     /* ── FOOTER ────────────────────────────────────── */
     footer {
@@ -607,17 +642,17 @@
       <div class="section-line"></div>
     </div>
     <div class="pending-list">
-      <div class="pending-item"><div class="dot" style="background:#e53e3e"></div><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Cadastrar imersão na Kiwify — produto, lotes e página de obrigado com link do grupo WhatsApp</div>
-      <div class="pending-item"><div class="dot" style="background:#e53e3e"></div><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Criar criativos de lançamento — arte de feed, vídeo de convite, criativo pago Meta Ads</div>
-      <div class="pending-item"><div class="dot" style="background:#e53e3e"></div><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Enviar convite via WhatsApp para alunas do Mapa da Sua Viagem (acesso gratuito)</div>
-      <div class="pending-item"><div class="dot" style="background:#D97A3A"></div><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Subir campanha Meta Ads — objetivo: conversão na página de inscrição</div>
-      <div class="pending-item"><div class="dot" style="background:#D97A3A"></div><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Distribuir verba de R$ 1.000 por lote e definir custo por lead alvo</div>
-      <div class="pending-item"><div class="dot" style="background:#D97A3A"></div><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Foto da Bruna em alta para substituir placeholder na página de vendas</div>
-      <div class="pending-item"><div class="dot" style="background:#D97A3A"></div><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Criar artes de virada de lote (stories) para 06/06, 13/06 e 20/06</div>
-      <div class="pending-item"><div class="dot"></div><strong style="margin-right:8px;">🔵 Mentoria</strong> Definir nome e valor final — ancoragem R$ 3.997, lançamento R$ 1.997</div>
-      <div class="pending-item"><div class="dot"></div><strong style="margin-right:8px;">🔵 Mentoria</strong> Montar pitch do último bloco e slide de oferta ao vivo</div>
-      <div class="pending-item"><div class="dot"></div><strong style="margin-right:8px;">🔵 Pré-evento</strong> Preparar slides da imersão — 10 passos + quadro comparativo ao vivo</div>
-      <div class="pending-item"><div class="dot"></div><strong style="margin-right:8px;">🔵 Pré-evento</strong> Montar sequência de aquecimento no grupo WhatsApp (14 a 19/06)</div>
+      <div class="pending-item" data-key="pp_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Cadastrar imersão na Kiwify — produto, lotes e página de obrigado com link do grupo WhatsApp</span></div>
+      <div class="pending-item" data-key="pp_criativos"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Criar criativos de lançamento — arte de feed, vídeo de convite, criativo pago Meta Ads</span></div>
+      <div class="pending-item" data-key="pp_convite"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Enviar convite via WhatsApp para alunas do Mapa da Sua Viagem (acesso gratuito)</span></div>
+      <div class="pending-item" data-key="pp_metaads"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Subir campanha Meta Ads — objetivo: conversão na página de inscrição</span></div>
+      <div class="pending-item" data-key="pp_verba"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Distribuir verba de R$ 500 (expansível +R$ 500) por lote e definir custo por lead alvo</span></div>
+      <div class="pending-item" data-key="pp_foto"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Foto da Bruna em alta para substituir placeholder na página de vendas</span></div>
+      <div class="pending-item" data-key="pp_artes_lote"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Criar artes de virada de lote (stories) para 06/06, 13/06 e 20/06</span></div>
+      <div class="pending-item" data-key="pp_mentoria_nome"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Mentoria</strong> Definir nome e valor final — ancoragem R$ 3.997, lançamento R$ 1.997</span></div>
+      <div class="pending-item" data-key="pp_mentoria_pitch"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Mentoria</strong> Montar pitch do último bloco e slide de oferta ao vivo</span></div>
+      <div class="pending-item" data-key="pp_slides"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Pré-evento</strong> Preparar slides da imersão — 10 passos + quadro comparativo ao vivo</span></div>
+      <div class="pending-item" data-key="pp_aquecimento"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Pré-evento</strong> Montar sequência de aquecimento no grupo WhatsApp (14 a 19/06)</span></div>
     </div>
   </section>
 
@@ -631,5 +666,59 @@
     </div>
   </footer>
 
+  <script>
+    const PP_KEY = 'proximos_checks';
+    const CRON_KEY = 'cronograma_checks';
+
+    // Mapeamento: data-key do próximo passo → índice no cronograma_checks
+    // Índices do cronograma: 0=Kiwify, 1=PáginaVendas, 2=Criativos, 3=Convite,
+    //   4=Lote1Abre, 5=Lote1Fecha, 6=Lote2Fecha, 7=Aquecimento, 8=Evento, 9=Followup
+    const CRON_MAP = {
+      pp_kiwify:      0,
+      pp_criativos:   2,
+      pp_convite:     3,
+      pp_aquecimento: 7,
+    };
+
+    function loadState() {
+      const pp   = JSON.parse(localStorage.getItem(PP_KEY)   || '{}');
+      const cron = JSON.parse(localStorage.getItem(CRON_KEY) || '{}');
+
+      document.querySelectorAll('.pending-item[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        const cronIdx = CRON_MAP[key];
+        const isDone = cronIdx !== undefined ? !!cron[cronIdx] : !!pp[key];
+        if (isDone) el.classList.add('done');
+      });
+    }
+
+    function saveState() {
+      const pp   = JSON.parse(localStorage.getItem(PP_KEY)   || '{}');
+      const cron = JSON.parse(localStorage.getItem(CRON_KEY) || '{}');
+
+      document.querySelectorAll('.pending-item[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        const isDone = el.classList.contains('done');
+        const cronIdx = CRON_MAP[key];
+        if (cronIdx !== undefined) {
+          cron[cronIdx] = isDone;
+        } else {
+          pp[key] = isDone;
+        }
+      });
+
+      localStorage.setItem(PP_KEY,   JSON.stringify(pp));
+      localStorage.setItem(CRON_KEY, JSON.stringify(cron));
+    }
+
+    document.querySelectorAll('.pending-item[data-key]').forEach(el => {
+      el.addEventListener('click', () => {
+        el.classList.toggle('done');
+        saveState();
+      });
+    });
+
+    loadState();
+  </script>
 </body>
 </html>
