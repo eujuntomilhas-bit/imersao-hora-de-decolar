@@ -107,13 +107,59 @@
     .tl-tag.ok { background: #e8f3ea; color: var(--verde-musgo); }
     .tl-tag.warn { background: #fef3e8; color: var(--terracota); }
     .tl-tag.info { background: #f0f5f1; color: #666; }
+
+    /* checkboxes de progresso */
+    .check-list {
+      list-style: none;
+      margin-top: 10px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .check-list li input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      margin-top: 1px;
+    }
+
+    .check-list li input[type="checkbox"]:checked {
+      background: var(--verde-musgo, #4F6F52);
+      border-color: var(--verde-musgo, #4F6F52);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 60%;
+    }
+
+    .check-list li input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <a href="../index.html" class="back">← Voltar ao início</a>
-    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" style="height:90px; display:block; margin: 12px auto 0; filter: brightness(0) invert(1);" />
+    <img src="../assets/logo-verde.png" alt="Imersão Hora de Decolar" style="height:90px; display:block; margin: 12px auto 0;" />
     <span class="tag" style="margin-top:16px;">11 — Cronograma</span>
     <h1>Cronograma</h1>
     <p>Etapas e prazos para subir a imersão na Kiwify e lançar o produto.</p>
@@ -131,12 +177,12 @@
         <div class="tl-body">
           <span class="tl-tag ok">Agora</span>
           <h3>Preparação do produto na Kiwify</h3>
-          <ul>
-            <li>Criar conta / acessar Kiwify</li>
-            <li>Cadastrar a imersão como produto (evento ao vivo)</li>
-            <li>Configurar os 3 lotes com preços e datas</li>
-            <li>Definir página de obrigado com link do grupo WhatsApp</li>
-            <li>Testar fluxo de compra</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Criar conta / acessar Kiwify</span></li>
+            <li><input type="checkbox" /><span>Cadastrar a imersão como produto (evento ao vivo)</span></li>
+            <li><input type="checkbox" /><span>Configurar os 3 lotes com preços e datas</span></li>
+            <li><input type="checkbox" /><span>Definir página de obrigado com link do grupo WhatsApp</span></li>
+            <li><input type="checkbox" /><span>Testar fluxo de compra</span></li>
           </ul>
         </div>
       </div>
@@ -149,11 +195,11 @@
         <div class="tl-body">
           <span class="tl-tag ok">Agora</span>
           <h3>Página de vendas</h3>
-          <ul>
-            <li>Escrever copy (headline, promessa, para quem é, o que vai aprender)</li>
-            <li>Montar a página na Kiwify</li>
-            <li>Adicionar seção Sobre a Bruna + depoimentos + FAQ</li>
-            <li>Revisar e publicar</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Escrever copy (headline, promessa, para quem é, o que vai aprender)</span></li>
+            <li><input type="checkbox" /><span>Montar a página na Kiwify</span></li>
+            <li><input type="checkbox" /><span>Adicionar seção Sobre a Bruna + depoimentos + FAQ</span></li>
+            <li><input type="checkbox" /><span>Revisar e publicar</span></li>
           </ul>
         </div>
       </div>
@@ -166,11 +212,11 @@
         <div class="tl-body">
           <span class="tl-tag ok">Agora</span>
           <h3>Criativos de captação</h3>
-          <ul>
-            <li>Arte de lançamento (feed)</li>
-            <li>Vídeo de convite — Bruna fala</li>
-            <li>Artes de lote (abertura e encerramento)</li>
-            <li>Criativo pago estático e vídeo para Meta Ads</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Arte de lançamento (feed)</span></li>
+            <li><input type="checkbox" /><span>Vídeo de convite — Bruna fala</span></li>
+            <li><input type="checkbox" /><span>Artes de lote (abertura e encerramento)</span></li>
+            <li><input type="checkbox" /><span>Criativo pago estático e vídeo para Meta Ads</span></li>
           </ul>
         </div>
       </div>
@@ -183,9 +229,9 @@
         <div class="tl-body">
           <span class="tl-tag ok">Agora</span>
           <h3>Convite para ex-alunas do Mapa da Sua Viagem</h3>
-          <ul>
-            <li>Redigir mensagem de convite no WhatsApp</li>
-            <li>Enviar para lista de alunas com link de acesso gratuito</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Redigir mensagem de convite no WhatsApp</span></li>
+            <li><input type="checkbox" /><span>Enviar para lista de alunas com link de acesso gratuito</span></li>
           </ul>
         </div>
       </div>
@@ -198,10 +244,10 @@
         <div class="tl-body">
           <span class="tl-tag warn">Lote 1 abre</span>
           <h3>Abertura das inscrições — Lote 1 (R$ 37,00)</h3>
-          <ul>
-            <li>Publicar post de lançamento no Instagram</li>
-            <li>Subir campanha no Meta Ads</li>
-            <li>Enviar para lista de WhatsApp e interessados</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Publicar post de lançamento no Instagram</span></li>
+            <li><input type="checkbox" /><span>Subir campanha no Meta Ads</span></li>
+            <li><input type="checkbox" /><span>Enviar para lista de WhatsApp e interessados</span></li>
           </ul>
         </div>
       </div>
@@ -214,9 +260,9 @@
         <div class="tl-body">
           <span class="tl-tag warn">Lote 1 fecha</span>
           <h3>Encerramento Lote 1 — virada para Lote 2 (R$ 57,00)</h3>
-          <ul>
-            <li>Post de encerramento de lote</li>
-            <li>Atualizar campanha no Meta Ads</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Post de encerramento de lote</span></li>
+            <li><input type="checkbox" /><span>Atualizar campanha no Meta Ads</span></li>
           </ul>
         </div>
       </div>
@@ -228,10 +274,10 @@
         </div>
         <div class="tl-body">
           <span class="tl-tag warn">Lote 2 fecha</span>
-          <h3>Encerramento Lote 2 — virada para Lote 3 (R$ 97,00)</h3>
-          <ul>
-            <li>Post de encerramento de lote</li>
-            <li>Última chance — urgência real</li>
+          <h3>Encerramento Lote 2 — virada para Lote 3 (R$ 77,00)</h3>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Post de encerramento de lote</span></li>
+            <li><input type="checkbox" /><span>Última chance — urgência real</span></li>
           </ul>
         </div>
       </div>
@@ -244,10 +290,10 @@
         <div class="tl-body">
           <span class="tl-tag info">Pré-evento</span>
           <h3>Aquecimento no grupo WhatsApp</h3>
-          <ul>
-            <li>Enviar materiais preparatórios</li>
-            <li>Lembretes de data e horário</li>
-            <li>Gerar antecipação e engajamento</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Enviar materiais preparatórios</span></li>
+            <li><input type="checkbox" /><span>Lembretes de data e horário</span></li>
+            <li><input type="checkbox" /><span>Gerar antecipação e engajamento</span></li>
           </ul>
         </div>
       </div>
@@ -260,11 +306,11 @@
         <div class="tl-body">
           <span class="tl-tag warn">Dia do evento</span>
           <h3>Imersão Hora de Decolar — ao vivo 09h00</h3>
-          <ul>
-            <li>Zoom aberto 15 min antes</li>
-            <li>Evento ~3h30</li>
-            <li>Pitch da mentoria no último bloco</li>
-            <li>Link de pagamento aberto no chat</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Zoom aberto 15 min antes</span></li>
+            <li><input type="checkbox" /><span>Evento ~3h30</span></li>
+            <li><input type="checkbox" /><span>Pitch da mentoria no último bloco</span></li>
+            <li><input type="checkbox" /><span>Link de pagamento aberto no chat</span></li>
           </ul>
         </div>
       </div>
@@ -277,9 +323,9 @@
         <div class="tl-body">
           <span class="tl-tag info">Pós-evento</span>
           <h3>Follow-up via WhatsApp</h3>
-          <ul>
-            <li>Mensagem para quem participou e não comprou a mentoria</li>
-            <li>Depoimentos e prints de resultado</li>
+          <ul class="check-list">
+            <li><input type="checkbox" /><span>Mensagem para quem participou e não comprou a mentoria</span></li>
+            <li><input type="checkbox" /><span>Depoimentos e prints de resultado</span></li>
           </ul>
         </div>
       </div>
@@ -289,9 +335,35 @@
   </main>
 
   <footer>
-    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" style="height:60px; display:block; margin: 0 auto 12px; opacity:0.6;" />
+    <img src="../assets/logo-verde.png" alt="Imersão Hora de Decolar" style="height:60px; display:block; margin: 0 auto 12px;" />
     Imersão Hora de Decolar · <strong>@eujuntomilhas</strong>
   </footer>
 
+  <script>
+    const STORAGE_KEY = 'cronograma_checks';
+
+    function saveChecks() {
+      const state = {};
+      document.querySelectorAll('.check-list input[type="checkbox"]').forEach((cb, i) => {
+        state[i] = cb.checked;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadChecks() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const state = JSON.parse(saved);
+      document.querySelectorAll('.check-list input[type="checkbox"]').forEach((cb, i) => {
+        if (state[i]) cb.checked = true;
+      });
+    }
+
+    document.querySelectorAll('.check-list input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', saveChecks);
+    });
+
+    loadChecks();
+  </script>
 </body>
 </html>
