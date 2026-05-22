@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Público, Dores e Objeções — @eujuntomilhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/page.css" />
+  <style>
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: #f0f5f1;
+      color: #4F6F52;
+      border: 1px solid #c8deca;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .tag.red {
+      background: #fdf0f0;
+      color: #c0392b;
+      border-color: #f5c6c6;
+    }
+
+    .tag.amber {
+      background: #fef6ec;
+      color: #b7600a;
+      border-color: #f5d9b0;
+    }
+
+    .tag.blue {
+      background: #eef3fb;
+      color: #2563a8;
+      border-color: #bdd0ef;
+    }
+
+    .dor-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 22px;
+      border-left: 4px solid var(--terracota, #D97A3A);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 12px;
+    }
+
+    .dor-card h3 {
+      font-family: 'Gabriela', serif;
+      color: #2C2C2C;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .dor-card p {
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .dor-card .verbatim {
+      font-style: italic;
+      color: #888;
+      font-size: 0.82rem;
+      margin-top: 8px;
+      border-left: 2px solid #e5e1db;
+      padding-left: 10px;
+    }
+
+    .perfil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .perfil-item {
+      background: #f9f8f6;
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .perfil-item .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #4F6F52;
+      margin-bottom: 4px;
+    }
+
+    .perfil-item .value {
+      font-size: 0.9rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .sonho-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      border-left: 4px solid #4F6F52;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .copy-hook {
+      background: #4F6F52;
+      color: #fff;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .copy-hook .hook-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8FAF9A;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .perfil-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="back">← Voltar ao início</a>
+    <img src="../assets/logo-verde.png" alt="Imersão Hora de Decolar" class="page-logo" />
+    <span class="tag" style="display:block; font-family:'Caveat',cursive; color:#D97A3A; font-size:1.1rem; margin-bottom:6px;">Inteligência de Público</span>
+    <h1>Público, Dores e Objeções</h1>
+    <p>Extraído das pesquisas de inscrição dos eventos anteriores. Base para copy, criativos e comunicação.</p>
+  </header>
+
+  <main>
+
+    <!-- PERFIL -->
+    <div class="block">
+      <h2>Perfil do Público</h2>
+      <div class="perfil-grid">
+        <div class="perfil-item">
+          <div class="label">Gênero predominante</div>
+          <div class="value">Feminino (~90% das respostas)</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Faixa etária principal</div>
+          <div class="value">35–55 anos (pico em 45–55)</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Estado civil</div>
+          <div class="value">Maioria casada, com filhos fora de casa</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Ocupação</div>
+          <div class="value">CLT e autônoma (empate) · liberal · aposentada</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Renda familiar</div>
+          <div class="value">R$ 3.000 a R$ 15.000 (maioria entre 5k–10k)</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Regiões</div>
+          <div class="value">SP, MG, RJ, RS, ES — todo Brasil</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Milhas que possui</div>
+          <div class="value">Muitas têm milhas paradas e não sabem usar. Algumas do zero.</div>
+        </div>
+        <div class="perfil-item">
+          <div class="label">Como chegou até a Bruna</div>
+          <div class="value">Instagram (maioria) · YouTube · indicação</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DORES PRINCIPAIS -->
+    <div class="block">
+      <h2>🔴 Dores Principais</h2>
+      <p style="font-size:0.85rem; color:#999; margin-bottom:16px;">Ordenadas por frequência nas pesquisas</p>
+
+      <div class="dor-card">
+        <h3>1. Não sabe emitir — trava na hora H</h3>
+        <p>Tem milhas, quer viajar, mas na hora de emitir não sabe por onde começar. Abre o site, não entende nada, fecha e desiste.</p>
+        <div class="verbatim">"Não sei usar minhas milhas" · "Tenho pontos e não sei como usar" · "Como uso minhas milhas?" · "Não sei nada, preciso aprender do zero"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>2. Tabela fixa é um mistério</h3>
+        <p>A tabela fixa (especialmente LATAM) aparece como a maior dificuldade técnica. Sente que é um segredo que só especialistas conhecem.</p>
+        <div class="verbatim">"Entender a danada da tabela fixa" · "Como usar tabela fixa LATAM" · "Tudo sobre tabela fixa" · "Saber e aplicar todos os segredos da tabela fixa"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>3. Não sabe pesquisar passagens com milhas</h3>
+        <p>Não sabe quais sites entrar, como comparar programas, qual companhia escolher para cada rota. Fica perdida no processo.</p>
+        <div class="verbatim">"Não sei fazer pesquisa inteligente de passagens" · "Não saber como procurar de forma ampla" · "Como encontrar emissões imperdíveis"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>4. Medo de transferir para o programa errado e perder tudo</h3>
+        <p>Tem milhas acumuladas com esforço e medo de mandar para o lugar errado e perder. Paralisia por insegurança.</p>
+        <div class="verbatim">"Medo do tempo ser curto entre acumular e o vencimento" · "Receio de enviar para Cia A e a passagem ser melhor na Cia B" · "Errar nas compras com pontos"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>5. Não consegue acumular milhas de forma estratégica</h3>
+        <p>Acumula pelo cartão mas acha pouco, não sabe como acelerar, não conhece estratégias além do automático.</p>
+        <div class="verbatim">"Não entendo como dobrar as milhas" · "Não sei os macetes que aparecem" · "Como acumular sem aumentar meu custo de vida"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>6. Dinheiro como barreira para viajar</h3>
+        <p>Sente que viajar é caro demais para a sua realidade. Passagens internacionais parecem inacessíveis. Milhas surgem como esperança.</p>
+        <div class="verbatim">"Falta de dinheiro" · "Passagens caras demais" · "Só posso viajar na alta temporada porque minhas férias são fixas" · "Com o salário que tenho, parece impossível"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>7. Não sabe voar de executiva com milhas</h3>
+        <p>Sonha com executiva mas acha que é só para quem tem muito dinheiro ou muitas milhas. Não sabe que é acessível.</p>
+        <div class="verbatim">"Dicas para emitir executiva" · "Viajar de executiva com milhas" · "Quero voar de executiva mas acho muito caro"</div>
+      </div>
+
+      <div class="dor-card">
+        <h3>8. Pontos espalhados em vários programas, sem saber unir</h3>
+        <p>Tem milhas em Smiles, Livelo, LATAM, cartões diferentes — tudo fragmentado. Não sabe consolidar nem aproveitar.</p>
+        <div class="verbatim">"Milhas em vários lugares e não sei como juntar" · "Tenho poucos pontos e espalhados" · "Fatura de 10k/mês e as milhas não dão nem uma viagem nacional"</div>
+      </div>
+    </div>
+
+    <!-- OBJEÇÕES -->
+    <div class="block">
+      <h2>🟡 Objeções e Bloqueios</h2>
+
+      <div class="dor-card" style="border-left-color: #E6A15A;">
+        <h3>"Isso funciona para os outros, não para mim"</h3>
+        <p>Vê resultados nos reels, parece fácil para quem mostra, mas na prática ela trava. Sente que não tem o perfil certo, a renda certa ou o conhecimento certo.</p>
+        <div class="verbatim">"É real? Até eu poderia viajar?" · "Acho que sou nova ainda" · "Acabo desistindo e perdendo as boas oportunidades"</div>
+      </div>
+
+      <div class="dor-card" style="border-left-color: #E6A15A;">
+        <h3>"Não tenho milhas suficientes"</h3>
+        <p>Acredita que precisa de muito mais milhas antes de agir. Fica esperando o momento ideal que nunca chega.</p>
+        <div class="verbatim">"Não tenho milhas suficientes para uma viagem" · "Preciso juntar mais antes de tentar"</div>
+      </div>
+
+      <div class="dor-card" style="border-left-color: #E6A15A;">
+        <h3>"Não tenho tempo para aprender"</h3>
+        <p>CLTs e mães especialmente. Querem aprender mas o dia a dia não deixa. Precisam de método rápido e direto.</p>
+        <div class="verbatim">"Falta de tempo por causa da CLT" · "Tenho neném de 1 ano, não consigo anotar tudo do zero" · "Trabalho muito"</div>
+      </div>
+
+      <div class="dor-card" style="border-left-color: #E6A15A;">
+        <h3>"É muito complexo, não vou conseguir"</h3>
+        <p>Smiles, LATAM, Livelo, alianças, parceiros, tabela fixa — parece um mundo técnico demais. Sente que precisa ser especialista.</p>
+        <div class="verbatim">"A cabeça embola" · "Parece fácil nos reels mas quando sento para fazer não consigo" · "Não entendo nada desse universo"</div>
+      </div>
+
+      <div class="dor-card" style="border-left-color: #E6A15A;">
+        <h3>"Minha renda é baixa, isso não é para mim"</h3>
+        <p>Acha que é um universo para quem ganha muito ou gasta muito no cartão. Não enxerga possibilidade com a própria realidade financeira.</p>
+        <div class="verbatim">"Aposentadoria baixa, o que devo fazer?" · "Ganho pouco, sustento casa e filhos sozinha" · "Meu salário não é alto"</div>
+      </div>
+    </div>
+
+    <!-- SONHOS -->
+    <div class="block">
+      <h2>✈️ Sonhos e Destinos que Aparecem</h2>
+      <div class="tag-list">
+        <span class="tag">Europa (Paris, Itália, Grécia, Portugal)</span>
+        <span class="tag">Disney (família)</span>
+        <span class="tag">Executiva internacional</span>
+        <span class="tag">Volta ao mundo</span>
+        <span class="tag">New York</span>
+        <span class="tag">Dubai</span>
+        <span class="tag">Irlanda</span>
+        <span class="tag">Polinésia Francesa</span>
+        <span class="tag">Indonésia</span>
+        <span class="tag">Nordeste brasileiro</span>
+        <span class="tag">Veneza</span>
+        <span class="tag">Egito</span>
+      </div>
+      <p style="margin-top:14px; font-size:0.85rem; color:#888;">O que viajar significa para elas: <strong>liberdade, recarregar energias, construir memórias, ver o mundo com os próprios olhos, se reconectar com a família.</strong></p>
+    </div>
+
+    <!-- HOOKS DE COPY -->
+    <div class="block">
+      <h2>💡 Hooks de Copy — prontos para usar</h2>
+      <p style="font-size:0.85rem; color:#999; margin-bottom:16px;">Extraídos da voz real do público. Use em criativos, legendas e página de vendas.</p>
+
+      <div class="copy-hook">
+        <div class="hook-label">Dor — tabela fixa</div>
+        "Você sabe que a tabela fixa existe. Você já tentou entender. Mas toda vez que abre o site, a cabeça embola — e você fecha tudo de novo."
+      </div>
+
+      <div class="copy-hook">
+        <div class="hook-label">Dor — milhas paradas</div>
+        "Você tem milhas acumuladas há anos. Só que elas continuam lá, paradas, enquanto você continua pagando passagem cara."
+      </div>
+
+      <div class="copy-hook">
+        <div class="hook-label">Dor — medo de errar</div>
+        "E se eu transferir para o programa errado? E se eu perder tudo com um clique? Esse medo paralisa mais do que qualquer coisa."
+      </div>
+
+      <div class="copy-hook">
+        <div class="hook-label">Aspiração — executiva</div>
+        "Você acha que executiva é só para quem tem muito dinheiro. Eu já viajei de executiva para a Europa usando milhas que qualquer pessoa consegue acumular."
+      </div>
+
+      <div class="copy-hook">
+        <div class="hook-label">Aspiração — viagem em família</div>
+        "Levar sua família para a Disney, para a Europa, para onde você sempre quis ir — sem gastar uma fortuna. Isso não é sorte. É método."
+      </div>
+
+      <div class="copy-hook">
+        <div class="hook-label">Objeção — renda baixa</div>
+        "Não importa quanto você ganha. Importa o que você já gasta. Quase todo gasto do dia a dia pode virar milha."
+      </div>
+
+      <div class="copy-hook">
+        <div class="hook-label">Objeção — complexidade</div>
+        "Não precisa entender tudo de milhas. Precisa entender o método. Em uma manhã, você sai sabendo exatamente o que fazer."
+      </div>
+    </div>
+
+    <!-- PERGUNTAS QUE FARIAM PARA A BRUNA -->
+    <div class="block">
+      <h2>☕ O que perguntariam para a Bruna</h2>
+      <p style="font-size:0.85rem; color:#999; margin-bottom:16px;">Perguntas reais das pesquisas — mostram o que o público quer aprender e o que valoriza na Bruna.</p>
+      <div class="tag-list">
+        <span class="tag blue">Como emitir passagens baratas?</span>
+        <span class="tag blue">Como usar tabela fixa LATAM?</span>
+        <span class="tag blue">Como viajar de executiva com milhas?</span>
+        <span class="tag blue">Por onde começar do zero?</span>
+        <span class="tag blue">Como acumular sem gastar mais?</span>
+        <span class="tag blue">Como fazer renda extra com milhas?</span>
+        <span class="tag blue">Qual programa escolher para emitir?</span>
+        <span class="tag blue">Como você aprendeu tudo isso?</span>
+        <span class="tag blue">Como viajar com família gastando pouco?</span>
+        <span class="tag blue">Como levar filhos para a Disney?</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <img src="../assets/logo-verde.png" alt="Imersão Hora de Decolar" class="footer-logo" />
+    Imersão Hora de Decolar · <strong>@eujuntomilhas</strong>
+  </footer>
+
+</body>
+</html>
