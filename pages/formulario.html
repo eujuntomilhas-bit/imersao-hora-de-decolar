@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário de Pesquisa — Imersão Hora de Decolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/page.css" />
+  <style>
+    .check-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .check-list li input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .check-list li input[type="checkbox"]:checked {
+      background: var(--verde-musgo, #4F6F52);
+      border-color: var(--verde-musgo, #4F6F52);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 60%;
+    }
+
+    .check-list li input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+
+    .form-link-box {
+      margin-top: 24px;
+      background: var(--offwhite, #F4F1EC);
+      border: 1.5px solid #e5e1db;
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .form-link-box p {
+      font-size: 0.875rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .form-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--verde-musgo, #4F6F52);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 6px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .form-link-btn:hover {
+      background: #3a5a3d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="back">← Voltar ao início</a>
+    <img src="../assets/logo-verde.png" alt="Imersão Hora de Decolar" class="page-logo" />
+    <span class="tag">12 — Formulário de Pesquisa</span>
+    <h1>Formulário de Pesquisa</h1>
+    <p>Coleta de dados e percepções das participantes antes ou após a imersão.</p>
+  </header>
+
+  <main>
+
+    <div class="block">
+      <h2>Tarefas</h2>
+      <ul class="check-list">
+        <li><input type="checkbox" id="c0" /><span>Fazer o formulário — definir perguntas e criar no Google Forms</span></li>
+        <li><input type="checkbox" id="c1" /><span>Adicionar o formulário no produto — página de obrigado ou grupo WhatsApp</span></li>
+      </ul>
+
+      <div class="form-link-box">
+        <p>📋 Link do formulário</p>
+        <a href="https://forms.gle/wvsk6Qnbokn3mXqx6" target="_blank" class="form-link-btn">
+          Abrir formulário →
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <img src="../assets/logo-verde.png" alt="Imersão Hora de Decolar" class="footer-logo" />
+    Imersão Hora de Decolar · <strong>@eujuntomilhas</strong>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'formulario_checks';
+
+    function saveChecks() {
+      const state = {};
+      document.querySelectorAll('.check-list input[type="checkbox"]').forEach((cb, i) => {
+        state[i] = cb.checked;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadChecks() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const state = JSON.parse(saved);
+      document.querySelectorAll('.check-list input[type="checkbox"]').forEach((cb, i) => {
+        if (state[i]) cb.checked = true;
+      });
+    }
+
+    document.querySelectorAll('.check-list input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', saveChecks);
+    });
+
+    loadChecks();
+  </script>
+
+</body>
+</html>
