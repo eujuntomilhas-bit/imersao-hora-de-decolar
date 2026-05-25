@@ -562,9 +562,10 @@
     .d11-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 40px;
       align-items: center;
       margin-top: 16px;
+      margin-bottom: 40px;
     }
 
     .d11-col-logo {
@@ -576,13 +577,20 @@
     .d11-col-info {
       display: flex;
       flex-direction: column;
+      gap: 0;
+    }
+
+    .d11-valor-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 24px;
     }
 
     .d11-logo {
       display: block;
       width: 100%;
-      max-width: 380px;
+      max-width: 360px;
       margin: 0 auto;
     }
 
@@ -1026,13 +1034,11 @@
     <div class="sec-inner">
       <span class="sec-tag">investimento</span>
 
+      <!-- Linha 1: logo + incluso lado a lado -->
       <div class="d11-grid">
-        <!-- Coluna esquerda: logo -->
         <div class="d11-col-logo">
           <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="d11-logo" />
         </div>
-
-        <!-- Coluna direita: incluso + valor + botão -->
         <div class="d11-col-info">
           <div class="preco-incluso">
             <h4>O que está incluso:</h4>
@@ -1044,15 +1050,17 @@
               <li>Gravação disponível sem prazo</li>
             </ul>
           </div>
-
-          <div class="preco-unico">
-            <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
-            <div class="valor"><sup>R$</sup>37</div>
-            <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
-          </div>
-
-          <a href="#" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap;">Garanta sua vaga agora <span class="arr">→</span></a>
         </div>
+      </div>
+
+      <!-- Linha 2: valor + botão centralizados -->
+      <div class="d11-valor-wrap">
+        <div class="preco-unico">
+          <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
+          <div class="valor"><sup>R$</sup>37</div>
+          <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
+        </div>
+        <a href="#" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap;">Garanta sua vaga agora <span class="arr">→</span></a>
       </div>
     </div>
   </section>
