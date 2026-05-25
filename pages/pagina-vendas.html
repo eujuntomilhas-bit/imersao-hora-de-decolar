@@ -17,8 +17,8 @@
       --ambar:     #E6A15A;
       --offwhite:  #F4F1EC;
       --creme:     #EDE8DF;
-      --texto:     #2C2C2C;
-      --suave:     #6B6560;
+      --texto:     #1a1a1a;
+      --suave:     #3a3a3a;
       --max:       680px;
     }
 
@@ -132,7 +132,7 @@
       white-space: nowrap;
     }
 
-    .hero-equacao .sep { color: rgba(230,161,90,0.5); font-size: 1.3rem; }
+    .hero-equacao .sep { color: var(--ambar); font-size: 1.3rem; }
 
     .hero h1 {
       font-family: 'Gabriela', serif;
@@ -147,7 +147,7 @@
     .hero h2 {
       font-size: 1rem;
       font-weight: 400;
-      color: var(--salvia);
+      color: var(--offwhite);
       line-height: 1.7;
       margin-bottom: 36px;
     }
@@ -302,7 +302,7 @@
       align-items: center;
       gap: 10px;
       font-size: 0.9rem;
-      color: rgba(244,241,236,0.8);
+      color: var(--offwhite);
     }
 
     .custo-list li::before { content: '→'; color: var(--terracota); font-weight: 700; flex-shrink: 0; }
@@ -446,7 +446,7 @@
     }
 
     .d67-col.sim h3 { color: var(--musgo); }
-    .d67-col.nao h3 { color: #b0aba6; }
+    .d67-col.nao h3 { color: #888; }
 
     .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 
@@ -458,12 +458,12 @@
       line-height: 1.6;
     }
 
-    .d67-col.sim .check-list li { color: #444; }
-    .d67-col.nao .check-list li { color: #b0aba6; }
+    .d67-col.sim .check-list li { color: #1a1a1a; }
+    .d67-col.nao .check-list li { color: #888; }
 
     .ico { font-size: 0.88rem; flex-shrink: 0; margin-top: 3px; font-weight: 700; }
     .d67-col.sim .ico { color: var(--musgo); }
-    .d67-col.nao .ico { color: #ccc; }
+    .d67-col.nao .ico { color: #999; }
 
     /* ── D8 — SOBRE BRUNA ─────────────────── */
     .d8 { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
@@ -590,7 +590,7 @@
 
     .preco-unico .obs {
       font-size: 0.78rem;
-      color: rgba(244,241,236,0.5);
+      color: var(--salvia);
       margin-top: 10px;
       line-height: 1.5;
     }
@@ -616,7 +616,7 @@
 
     .d12 h2 span { color: var(--terracota); }
 
-    .d12-sub { font-size: 0.95rem; color: var(--suave); margin-bottom: 32px; line-height: 1.6; }
+    .d12-sub { font-size: 0.95rem; color: var(--musgo); margin-bottom: 32px; line-height: 1.6; }
 
     .d12-foto { position: relative; overflow: hidden; }
 
@@ -774,7 +774,6 @@
         <span class="pill pill-glass">📅 20 jun 2026</span>
         <span class="pill pill-glass">🕘 09h00</span>
         <span class="pill pill-glass">💻 Zoom ao vivo</span>
-        <span class="pill pill-glass">⏱ ~3h30</span>
       </div>
       <a href="#preco" class="btn">Quero minha vaga <span class="arr">→</span></a>
     </div>
