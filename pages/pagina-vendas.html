@@ -559,11 +559,31 @@
     .d11 .sec-tag::before { background: #fff; }
     .d11 .sec-h { color: var(--offwhite); display: none; }
 
+    .d11-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .d11-col-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .d11-col-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
     .d11-logo {
       display: block;
-      width: 320px;
-      max-width: 80%;
-      margin: 0 auto 32px auto;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
     }
 
     .preco-incluso {
@@ -772,6 +792,8 @@
       .d8-content { padding: 56px 28px; order: -1; }
       .d8-foto { min-height: 300px; }
       .d12-content { padding: 56px 28px; }
+      .d11-grid { grid-template-columns: 1fr; gap: 24px; }
+      .d11-logo { max-width: 280px; }
       .d12-foto { min-height: 280px; }
       .entrega-grid { grid-template-columns: 1fr; }
       .d4-layout { grid-template-columns: 1fr; padding: 56px 28px; gap: 32px; }
@@ -1004,26 +1026,34 @@
     <div class="sec-inner">
       <span class="sec-tag">investimento</span>
 
-      <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="d11-logo" />
+      <div class="d11-grid">
+        <!-- Coluna esquerda: logo -->
+        <div class="d11-col-logo">
+          <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="d11-logo" />
+        </div>
 
-      <div class="preco-incluso">
-        <h4>O que está incluso:</h4>
-        <ul>
-          <li>Imersão ao vivo de ~3h30 no Zoom</li>
-          <li>Método completo dos 10 passos</li>
-          <li>Aplicação na sua rota e suas milhas</li>
-          <li>Mapa da Sua Viagem com Milhas (guia PDF)</li>
-          <li>Gravação disponível sem prazo</li>
-        </ul>
+        <!-- Coluna direita: incluso + valor + botão -->
+        <div class="d11-col-info">
+          <div class="preco-incluso">
+            <h4>O que está incluso:</h4>
+            <ul>
+              <li>Imersão ao vivo de ~3h30 no Zoom</li>
+              <li>Método completo dos 10 passos</li>
+              <li>Aplicação na sua rota e suas milhas</li>
+              <li>Mapa da Sua Viagem com Milhas (guia PDF)</li>
+              <li>Gravação disponível sem prazo</li>
+            </ul>
+          </div>
+
+          <div class="preco-unico">
+            <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
+            <div class="valor"><sup>R$</sup>37</div>
+            <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
+          </div>
+
+          <a href="#" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap;">Garanta sua vaga agora <span class="arr">→</span></a>
+        </div>
       </div>
-
-      <div class="preco-unico">
-        <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
-        <div class="valor"><sup>R$</sup>37</div>
-        <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
-      </div>
-
-      <a href="#" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap;">Garanta sua vaga agora <span class="arr">→</span></a>
     </div>
   </section>
 
