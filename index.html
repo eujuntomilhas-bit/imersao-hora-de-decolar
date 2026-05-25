@@ -649,6 +649,7 @@
       <div class="section-line"></div>
     </div>
     <div class="pending-list">
+      <div class="pending-item" data-key="pp_checkout_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 AMANHÃ · 26/05</strong> Configurar checkout do produto na Kiwify — página de pagamento, lotes e link de compra</span></div>
       <div class="pending-item" data-key="pp_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Cadastrar imersão na Kiwify — produto, lotes e página de obrigado com link do grupo WhatsApp</span></div>
       <div class="pending-item" data-key="pp_criativos"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Criar criativos de lançamento — arte de feed, vídeo de convite, criativo pago Meta Ads</span></div>
       <div class="pending-item" data-key="pp_convite"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Enviar convite via WhatsApp para alunas do Mapa da Sua Viagem (acesso gratuito)</span></div>
@@ -674,35 +675,35 @@
   </footer>
 
   <script>
-    const PP_KEY = 'proximos_checks';
-
-    function loadState() {
-      try {
-        const pp = JSON.parse(localStorage.getItem(PP_KEY) || '{}');
-        document.querySelectorAll('.pending-item[data-key]').forEach(el => {
-          if (pp[el.dataset.key] === true) el.classList.add('done');
-        });
-      } catch(e) { console.warn('loadState erro:', e); }
-    }
+    const PP_KEY = 'imersao_proximos_v2';
 
     function saveState() {
-      try {
-        const pp = {};
-        document.querySelectorAll('.pending-item[data-key]').forEach(el => {
-          pp[el.dataset.key] = el.classList.contains('done');
-        });
-        localStorage.setItem(PP_KEY, JSON.stringify(pp));
-      } catch(e) { console.warn('saveState erro:', e); }
+      const pp = {};
+      document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
+        pp[el.getAttribute('data-key')] = el.classList.contains('done');
+      });
+      localStorage.setItem(PP_KEY, JSON.stringify(pp));
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      loadState();
+    function loadState() {
+      var raw = localStorage.getItem(PP_KEY);
+      if (!raw) return;
+      var pp = JSON.parse(raw);
+      document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
+        var key = el.getAttribute('data-key');
+        if (pp[key] === true) {
+          el.classList.add('done');
+        }
+      });
+    }
 
-      document.querySelectorAll('.pending-item[data-key]').forEach(el => {
-        el.addEventListener('click', () => {
-          el.classList.toggle('done');
-          saveState();
-        });
+    // DOM já está pronto (script no final do body)
+    loadState();
+
+    document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        el.classList.toggle('done');
+        saveState();
       });
     });
   </script>
