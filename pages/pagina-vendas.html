@@ -554,9 +554,54 @@
       pointer-events: none;
     }
 
-    .d11 .sec-tag { color: var(--salvia); }
-    .d11 .sec-tag::before { background: var(--salvia); }
-    .d11 .sec-h { color: var(--offwhite); }
+    .d11 .sec-tag { color: #fff; font-size: 2.8rem; }
+    .d11 .sec-tag::before { background: #fff; }
+    .d11 .sec-h { color: var(--offwhite); display: none; }
+
+    .d11-logo {
+      display: block;
+      width: 320px;
+      max-width: 80%;
+      margin: 0 auto 32px auto;
+    }
+
+    .preco-incluso {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 20px 28px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .preco-incluso h4 {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--ambar);
+      margin-bottom: 12px;
+    }
+
+    .preco-incluso ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .preco-incluso ul li {
+      font-size: 0.95rem;
+      color: var(--offwhite);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .preco-incluso ul li::before {
+      content: '✓';
+      color: var(--ambar);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
 
     .preco-unico {
       background: rgba(255,255,255,0.08);
@@ -569,7 +614,7 @@
     }
 
     .preco-unico .lote-nome {
-      font-size: 0.72rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--salvia);
@@ -954,13 +999,27 @@
   <section class="sec d11" id="preco">
     <div class="sec-inner">
       <span class="sec-tag">investimento</span>
-      <h2 class="sec-h">Garanta sua vaga.</h2>
+
+      <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="d11-logo" />
+
+      <div class="preco-incluso">
+        <h4>O que está incluso:</h4>
+        <ul>
+          <li>Imersão ao vivo de ~3h30 no Zoom</li>
+          <li>Método completo dos 10 passos</li>
+          <li>Aplicação na sua rota e suas milhas</li>
+          <li>Mapa da Sua Viagem com Milhas (guia PDF)</li>
+          <li>Gravação disponível por 7 dias</li>
+        </ul>
+      </div>
+
       <div class="preco-unico">
         <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
         <div class="valor"><sup>R$</sup>37</div>
         <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
       </div>
-      <a href="#" class="btn">Quero garantir a minha viagem <span class="arr">→</span></a>
+
+      <a href="#" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap;">Garanta sua vaga agora <span class="arr">→</span></a>
     </div>
   </section>
 
