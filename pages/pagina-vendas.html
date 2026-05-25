@@ -666,8 +666,37 @@
       margin-left: 6px;
     }
 
+    /* ── TARJA MOBILE ────────────────────── */
+    .hero-foto-tarja {
+      display: none;
+    }
+
     /* ── RESPONSIVO ───────────────────────── */
     @media (max-width: 860px) {
+      .hero-foto { position: relative; }
+      .hero-foto-tarja {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: var(--musgo);
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 10px 16px;
+        letter-spacing: 0.02em;
+      }
+      .tarja-sep {
+        color: var(--ambar);
+        font-weight: 700;
+      }
       .hero, .d3, .d8, .d12 { grid-template-columns: 1fr; }
       .hero-foto { min-height: 320px; }
       .hero-content { padding: 60px 28px; }
@@ -702,6 +731,13 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-foto">
+      <div class="hero-foto-tarja">
+        <span>📅 20 jun 2026</span>
+        <span class="tarja-sep">·</span>
+        <span>🕘 09h00</span>
+        <span class="tarja-sep">·</span>
+        <span>💻 Zoom ao vivo</span>
+      </div>
       <img src="../assets/fotos/ira.jpg" alt="Bruna no Irã" />
     </div>
     <div class="hero-content">
