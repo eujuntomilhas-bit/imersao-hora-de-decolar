@@ -13,12 +13,12 @@
     :root {
       --musgo:     #4F6F52;
       --salvia:    #8FAF9A;
-      --terracota: #D97A3A;
+      --terracota: #E8571A;
       --ambar:     #E6A15A;
       --offwhite:  #F4F1EC;
       --creme:     #EDE8DF;
-      --texto:     #2C2C2C;
-      --suave:     #6B6560;
+      --texto:     #1a1a1a;
+      --suave:     #3a3a3a;
       --max:       680px;
     }
 
@@ -95,7 +95,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 60px;
+      padding: 80px 60px 80px 60px;
+      padding-top: 160px;
       position: relative;
       overflow: hidden;
     }
@@ -112,26 +113,27 @@
       pointer-events: none;
     }
 
-    /* Logo — integrada ao fluxo do hero, antes do título */
+    /* Logo — centralizada no topo do bloco verde */
     .hero-logo {
-      width: 200px;
+      width: 560px;
+      max-width: 80%;
       display: block;
-      margin-bottom: 28px;
-      opacity: 0.92;
+      margin: -200px auto 72px auto;
     }
 
     .hero-equacao {
       font-family: 'Caveat', cursive;
-      font-size: 1.1rem;
-      color: var(--ambar);
+      font-size: 1.6rem;
+      color: #fff;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
 
-    .hero-equacao .sep { color: rgba(230,161,90,0.5); font-size: 1.3rem; }
+    .hero-equacao .sep { color: var(--ambar); font-size: 1.6rem; }
 
     .hero h1 {
       font-family: 'Gabriela', serif;
@@ -146,7 +148,7 @@
     .hero h2 {
       font-size: 1rem;
       font-weight: 400;
-      color: var(--salvia);
+      color: var(--offwhite);
       line-height: 1.7;
       margin-bottom: 36px;
     }
@@ -191,53 +193,13 @@
     }
 
     .btn:hover {
-      background: #c16a2a;
+      background: #c94412;
       transform: translateY(-2px);
       box-shadow: 0 10px 36px rgba(217,122,58,0.45);
     }
 
     .btn .arr { transition: transform 0.2s; }
     .btn:hover .arr { transform: translateX(5px); }
-
-    /* Botão hero — destaque extra com brilho pulsante */
-    .btn-hero {
-      font-size: 1rem;
-      padding: 20px 48px;
-      border-radius: 4px;
-      background: #E8622A;
-      box-shadow: 0 0 0 0 rgba(232,98,42,0.7), 0 8px 32px rgba(232,98,42,0.55);
-      animation: pulse-glow 2s ease-in-out infinite;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-hero::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 40%;
-      height: 200%;
-      background: rgba(255,255,255,0.18);
-      transform: skewX(-20deg);
-      animation: shine 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(232,98,42,0.6), 0 8px 32px rgba(232,98,42,0.5); }
-      50%       { box-shadow: 0 0 0 10px rgba(232,98,42,0), 0 12px 40px rgba(232,98,42,0.7); }
-    }
-
-    @keyframes shine {
-      0%   { left: -60%; }
-      40%, 100% { left: 130%; }
-    }
-
-    .btn-hero:hover {
-      background: #c84f1e;
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 0 6px rgba(232,98,42,0.25), 0 16px 48px rgba(232,98,42,0.6);
-    }
 
     /* ── SEÇÃO BASE ───────────────────────── */
     .sec { padding: 72px 40px; }
@@ -249,8 +211,8 @@
 
     .sec-tag {
       font-family: 'Caveat', cursive;
-      font-size: 1rem;
-      color: var(--terracota);
+      font-size: 2.2rem;
+      color: #E8571A;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -326,8 +288,8 @@
       justify-content: center;
     }
 
-    .d3 .sec-tag { color: var(--salvia); }
-    .d3 .sec-tag::before { background: var(--salvia); }
+    .d3 .sec-tag { color: #fff; font-size: 2.2rem; }
+    .d3 .sec-tag::before { background: #fff; }
     .d3 .sec-h { color: var(--offwhite); }
     .d3 .sec-h span { color: var(--ambar); }
 
@@ -341,7 +303,7 @@
       align-items: center;
       gap: 10px;
       font-size: 0.9rem;
-      color: rgba(244,241,236,0.8);
+      color: var(--offwhite);
     }
 
     .custo-list li::before { content: '→'; color: var(--terracota); font-weight: 700; flex-shrink: 0; }
@@ -485,7 +447,7 @@
     }
 
     .d67-col.sim h3 { color: var(--musgo); }
-    .d67-col.nao h3 { color: #b0aba6; }
+    .d67-col.nao h3 { color: #1a1a1a; }
 
     .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 
@@ -497,12 +459,12 @@
       line-height: 1.6;
     }
 
-    .d67-col.sim .check-list li { color: #444; }
-    .d67-col.nao .check-list li { color: #b0aba6; }
+    .d67-col.sim .check-list li { color: #1a1a1a; }
+    .d67-col.nao .check-list li { color: #1a1a1a; }
 
     .ico { font-size: 0.88rem; flex-shrink: 0; margin-top: 3px; font-weight: 700; }
     .d67-col.sim .ico { color: var(--musgo); }
-    .d67-col.nao .ico { color: #ccc; }
+    .d67-col.nao .ico { color: #cc0000; }
 
     /* ── D8 — SOBRE BRUNA ─────────────────── */
     .d8 { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
@@ -515,8 +477,8 @@
       justify-content: center;
     }
 
-    .d8 .sec-tag { color: var(--salvia); }
-    .d8 .sec-tag::before { background: var(--salvia); }
+    .d8 .sec-tag { color: #fff; font-size: 2.2rem; }
+    .d8 .sec-tag::before { background: #fff; }
 
     .d8 h3 { font-family: 'Gabriela', serif; font-size: 1.8rem; color: var(--offwhite); margin-bottom: 4px; }
 
@@ -593,14 +555,92 @@
       pointer-events: none;
     }
 
-    .d11 .sec-tag { color: var(--salvia); }
-    .d11 .sec-tag::before { background: var(--salvia); }
-    .d11 .sec-h { color: var(--offwhite); }
+    .d11 .sec-tag { color: #fff; font-size: 2.8rem; }
+    .d11 .sec-tag::before { background: #fff; }
+    .d11 .sec-h { color: var(--offwhite); display: none; }
+
+    .d11-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
+
+    .d11-col-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .d11-col-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .d11-valor-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .d11-logo {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .preco-incluso {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 20px 28px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .preco-incluso h4 {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--ambar);
+      margin-bottom: 12px;
+    }
+
+    .preco-incluso ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .preco-incluso ul li {
+      font-size: 0.95rem;
+      color: var(--offwhite);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .preco-incluso ul li::before {
+      content: '✓';
+      color: var(--ambar);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
 
     .preco-unico {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.15);
       border-radius: 8px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
       padding: 40px 32px;
       text-align: center;
       max-width: 320px;
@@ -608,10 +648,10 @@
     }
 
     .preco-unico .lote-nome {
-      font-size: 0.72rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--salvia);
+      color: #fff;
       display: block;
       margin-bottom: 16px;
       font-weight: 700;
@@ -628,8 +668,8 @@
     .preco-unico .valor sup { font-size: 1.3rem; vertical-align: super; }
 
     .preco-unico .obs {
-      font-size: 0.78rem;
-      color: rgba(244,241,236,0.5);
+      font-size: 0.85rem;
+      color: #fff;
       margin-top: 10px;
       line-height: 1.5;
     }
@@ -655,7 +695,7 @@
 
     .d12 h2 span { color: var(--terracota); }
 
-    .d12-sub { font-size: 0.95rem; color: var(--suave); margin-bottom: 32px; line-height: 1.6; }
+    .d12-sub { font-size: 0.95rem; color: var(--musgo); margin-bottom: 32px; line-height: 1.6; }
 
     .d12-foto { position: relative; overflow: hidden; }
 
@@ -706,12 +746,54 @@
       margin-left: 6px;
     }
 
+    /* ── TARJA MOBILE ────────────────────── */
+    .hero-foto-tarja {
+      display: none;
+    }
+
     /* ── RESPONSIVO ───────────────────────── */
     @media (max-width: 860px) {
+      .hero-foto { position: relative; }
+      .hero-foto-tarja {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: var(--musgo);
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding: 18px 16px;
+        letter-spacing: 0.02em;
+      }
+      .tarja-sep {
+        color: var(--ambar);
+        font-weight: 700;
+      }
+      /* tarja numa linha só */
+      .hero-foto-tarja {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: clamp(0.7rem, 3.5vw, 1.3rem);
+      }
+      /* duração — esconde no mobile */
+      .tarja-duracao { display: none; }
+      .tarja-sep-duracao { display: none; }
+      /* equação com mais contraste no mobile */
+      .hero-equacao { color: #fff; }
+      .hero-equacao .sep { color: var(--ambar); opacity: 1; }
       .hero, .d3, .d8, .d12 { grid-template-columns: 1fr; }
       .hero-foto { min-height: 320px; }
       .hero-content { padding: 60px 28px; }
-      .hero-logo { width: 45%; max-width: 180px; }
+      .hero-logo { width: 85%; max-width: 380px; margin: 0 auto 28px auto; }
       .d3-foto { min-height: 260px; order: -1; }
       .d3-content { padding: 48px 28px; }
       .d67 { grid-template-columns: 1fr; }
@@ -720,6 +802,10 @@
       .d8-content { padding: 56px 28px; order: -1; }
       .d8-foto { min-height: 300px; }
       .d12-content { padding: 56px 28px; }
+      .d11-grid { grid-template-columns: 1fr; gap: 24px; }
+      .d11-logo { max-width: 280px; }
+      .preco-incluso { margin: 0 auto; width: 100%; }
+      .d11-col-info { align-items: center; }
       .d12-foto { min-height: 280px; }
       .entrega-grid { grid-template-columns: 1fr; }
       .d4-layout { grid-template-columns: 1fr; padding: 56px 28px; gap: 32px; }
@@ -734,14 +820,23 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="../index.html" class="back">← Projeto</a>
+    <div></div>
     <div class="nav-logo-wrap"><img src="../assets/logo.png" alt="Imersão Hora de Decolar" /></div>
-    <span class="tag">rascunho de copy</span>
+    <div></div>
   </nav>
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-foto">
+      <div class="hero-foto-tarja">
+        <span>📅 20 jun 2026</span>
+        <span class="tarja-sep">·</span>
+        <span>🕘 09h00</span>
+        <span class="tarja-sep">·</span>
+        <span>💻 Zoom ao vivo</span>
+        <span class="tarja-sep tarja-sep-duracao">·</span>
+        <span class="tarja-duracao">⏱ ~3h30</span>
+      </div>
       <img src="../assets/fotos/ira.jpg" alt="Bruna no Irã" />
     </div>
     <div class="hero-content">
@@ -757,14 +852,13 @@
       </div>
 
       <h1>Uma manhã que vai mudar<br><span>o resto da sua vida.</span></h1>
-      <h2>Monte em uma manhã a sua viagem para qualquer lugar do mundo com milhas.</h2>
+      <h2>Em uma manhã você montará a sua viagem para qualquer lugar do mundo com milhas.</h2>
       <div class="hero-pills">
         <span class="pill pill-glass">📅 20 jun 2026</span>
         <span class="pill pill-glass">🕘 09h00</span>
         <span class="pill pill-glass">💻 Zoom ao vivo</span>
-        <span class="pill pill-glass">⏱ ~3h30</span>
       </div>
-      <a href="https://pay.kiwify.com.br/abdjXts" class="btn btn-hero">Quero minha vaga <span class="arr">→</span></a>
+      <a href="#preco" class="btn">Quero minha vaga <span class="arr">→</span></a>
     </div>
   </section>
 
@@ -823,13 +917,13 @@
     <div class="d4-layout">
       <div class="d4-texto-col">
         <span class="sec-tag">a solução</span>
-        <h2 class="sec-h">Foi por isso que eu criei a Imersão Hora de Decolar.</h2>
+        <h2 class="sec-h">Foi por isso que eu criei a <span style="color:#E8571A;">Imersão Hora de Decolar.</span></h2>
         <p class="d4-texto">Em uma manhã, você aprende o método completo — da pesquisa à emissão — do jeito certo, na ordem certa, sem pular etapas.</p>
         <p class="d4-texto">Não é teoria. É você, comigo, ao vivo, aplicando o passo a passo na <em>sua</em> rota, com as <em>suas</em> milhas.</p>
         <p class="d4-texto">Você vai entender como a cabeça de quem emite funciona. E vai conseguir replicar sozinha — <strong>para sempre</strong>.</p>
         <div class="metodo-box">
           <span class="metodo-label">o método da imersão</span>
-          <div class="metodo-nome">Mapa da Sua Viagem com Milhas</div>
+          <div class="metodo-nome">Mapa da Sua Viagem<br>com Milhas</div>
         </div>
       </div>
       <div class="d4-mockup-col">
@@ -885,7 +979,7 @@
       </ul>
     </div>
     <div class="d67-col nao">
-      <h3>Esta imersão<br><strong>não é para você</strong> se…</h3>
+      <h3>Esta imersão <strong>não é para você</strong> se…</h3>
       <ul class="check-list">
         <li><span class="ico">✕</span><span>Você quer acumular milhas só para vender</span></li>
         <li><span class="ico">✕</span><span>Você espera resultado sem atenção e prática</span></li>
@@ -943,13 +1037,35 @@
   <section class="sec d11" id="preco">
     <div class="sec-inner">
       <span class="sec-tag">investimento</span>
-      <h2 class="sec-h">Garanta sua vaga.</h2>
-      <div class="preco-unico">
-        <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
-        <div class="valor"><sup>R$</sup>37</div>
-        <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
+
+      <!-- Linha 1: logo + incluso lado a lado -->
+      <div class="d11-grid">
+        <div class="d11-col-logo">
+          <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="d11-logo" />
+        </div>
+        <div class="d11-col-info">
+          <div class="preco-incluso">
+            <h4>O que está incluso:</h4>
+            <ul>
+              <li>Imersão ao vivo de ~3h30 no Zoom</li>
+              <li>Método completo dos 10 passos</li>
+              <li>Aplicação na sua rota e suas milhas</li>
+              <li>Mapa da Sua Viagem com Milhas (guia PDF)</li>
+              <li>Gravação disponível</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <a href="https://pay.kiwify.com.br/abdjXts" class="btn">Quero garantir a minha viagem <span class="arr">→</span></a>
+
+      <!-- Linha 2: valor + botão centralizados -->
+      <div class="d11-valor-wrap">
+        <div class="preco-unico">
+          <span class="lote-nome">🔥 Lote 1 · Imersão ao vivo · 20 de junho</span>
+          <div class="valor"><sup>R$</sup>37</div>
+          <div class="obs">O valor aumenta conforme a data da sua inscrição.<br>Garante agora no menor preço.</div>
+        </div>
+        <a href="https://pay.kiwify.com.br/abdjXts" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap; width: 100%; justify-content: center; display:inline-flex;">Garanta sua vaga agora <span class="arr">→</span></a>
+      </div>
     </div>
   </section>
 
@@ -958,7 +1074,7 @@
     <div class="d12-content">
       <h2>Sua viagem começa<br><span>nesta manhã.</span></h2>
       <p class="d12-sub">20 de junho · 09h00 · Ao vivo no Zoom<br>Uma manhã que vai mudar o resto da sua vida.</p>
-      <a href="#preco" class="btn">Quero garantir a minha viagem <span class="arr">→</span></a>
+      <a href="https://pay.kiwify.com.br/abdjXts" target="_blank" rel="noopener noreferrer" class="btn">Quero garantir minha&nbsp;viagem <span class="arr">→</span></a>
     </div>
     <div class="d12-foto">
       <img src="../assets/fotos/captolio.jpg" alt="Bruna viajando" />
