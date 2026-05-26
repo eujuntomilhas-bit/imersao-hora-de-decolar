@@ -1,0 +1,24 @@
+# Vídeos e arquivos de mídia pesados
+*.mp4
+*.MOV
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Imagens grandes / logos soltas na raiz
+logo fundo verde.png
+logo para whatsapp.png
+mockup.png
+
+# Pastas de mídia local
+CRIATIVOS/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vercel
+
+site/
