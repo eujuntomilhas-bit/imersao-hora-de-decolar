@@ -1062,7 +1062,7 @@
     <div class="simulador-wrap">
       <div class="simulador-header">
         <h3 class="simulador-titulo">Simulação de Receita — Dia 20/06</h3>
-        <p class="simulador-sub">Baseado em conv. CEP de 10% · R$ 1.997/aluna</p>
+        <p class="simulador-sub">Ticket médio R$ 57 · Conv. CEP de 10% · R$ 1.997/aluna</p>
       </div>
       <div class="simulador-body">
         <!-- Slider / input -->
@@ -1187,16 +1187,8 @@
     function calcularReceita(inscritos) {
       inscritos = parseInt(inscritos) || 0;
 
-      // Ticket médio ponderado por lote
-      // Lote 1 R$37 (0-80), Lote 2 R$57 (81-150), Lote 3 R$77 (151+)
-      var receitaImersao = 0;
-      if (inscritos <= 80) {
-        receitaImersao = inscritos * 37;
-      } else if (inscritos <= 150) {
-        receitaImersao = (80 * 37) + ((inscritos - 80) * 57);
-      } else {
-        receitaImersao = (80 * 37) + (70 * 57) + ((inscritos - 150) * 77);
-      }
+      // Ticket médio R$ 57
+      var receitaImersao = inscritos * 57;
 
       var convCep = Math.round(inscritos * 0.10);
       var receitaCep = convCep * 1997;
