@@ -401,6 +401,24 @@
     .item-check svg { display: none; }
     .pending-item.done .item-check svg { display: block; }
 
+    .owner-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .owner-bruna  { background: #f0e8ff; color: #7c3aed; }
+    .owner-carol  { background: #fce7f3; color: #be185d; }
+    .owner-luis   { background: #e0f2fe; color: #0369a1; }
+    .owner-ambos  { background: #fef3c7; color: #92400e; }
+    .pending-item.done .owner-tag { opacity: 0.4; }
+
     /* ── FOOTER ────────────────────────────────────── */
     footer {
       background: var(--creme);
@@ -489,6 +507,273 @@
       .mini-grid { grid-template-columns: 1fr; }
       .hero-left { padding: 48px 24px 32px; }
       .hero-right { padding: 0 24px 48px; }
+    }
+
+    /* ── METAS DE VENDAS ────────────────────────────── */
+    .section-metas {
+      padding: 80px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Resumo geral */
+    .meta-resumo {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      background: var(--musgo);
+      border-radius: 10px;
+      padding: 24px 32px;
+      margin-bottom: 32px;
+    }
+
+    .meta-resumo-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-resumo-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--salvia); font-weight: 600; }
+    .meta-resumo-valor { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: #fff; }
+    .meta-resumo-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.15); }
+
+    /* Barra de progresso */
+    .meta-progress-wrap {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      border: 1px solid rgba(79,111,82,0.1);
+    }
+
+    .meta-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .meta-progress-label { font-size: 0.8rem; font-weight: 600; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.06em; }
+    .meta-progress-count { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--musgo); font-weight: 600; }
+
+    .meta-progress-track {
+      position: relative;
+      background: rgba(79,111,82,0.1);
+      border-radius: 100px;
+      height: 14px;
+      overflow: visible;
+      margin-bottom: 16px;
+    }
+
+    .meta-progress-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(to right, var(--salvia), var(--musgo));
+      transition: width 0.6s cubic-bezier(.4,0,.2,1);
+      position: relative;
+    }
+
+    .meta-phase-marker {
+      position: absolute;
+      top: -4px;
+      width: 2px;
+      height: 22px;
+      background: var(--terracota);
+      opacity: 0.5;
+      transform: translateX(-50%);
+    }
+
+    .meta-phase-tip {
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--terracota);
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+
+    .meta-progress-input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .meta-progress-input-row label { font-size: 0.8rem; color: var(--texto-suave); font-weight: 500; }
+
+    .meta-progress-input-row input[type=number] {
+      width: 80px;
+      padding: 6px 10px;
+      border: 1.5px solid rgba(79,111,82,0.25);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--musgo);
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .meta-progress-input-row input[type=number]:focus { border-color: var(--musgo); }
+
+    .meta-progress-input-row button {
+      padding: 6px 16px;
+      background: var(--musgo);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .meta-progress-input-row button:hover { background: #3a5540; }
+
+    /* Fases */
+    .fases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .fase-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px 20px;
+      border: 1px solid rgba(79,111,82,0.1);
+      border-top: 3px solid var(--salvia);
+      position: relative;
+    }
+
+    .fase-card.fase-1 { border-top-color: var(--salvia); }
+    .fase-card.fase-2 { border-top-color: var(--ambar); }
+    .fase-card.fase-3 { border-top-color: var(--terracota); }
+
+    .fase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .fase-num { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--texto-suave); }
+    .fase-periodo { font-size: 0.7rem; color: var(--texto-suave); }
+
+    .fase-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--musgo); margin-bottom: 6px; }
+    .fase-meta { font-size: 0.82rem; color: var(--texto); margin-bottom: 4px; }
+    .fase-meta strong { color: var(--musgo); }
+    .fase-lote { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: var(--terracota); margin-bottom: 12px; }
+
+    .fase-canais { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+    .fase-canais li { font-size: 0.78rem; color: var(--texto-suave); display: flex; align-items: center; gap: 6px; }
+    .fase-canais li::before { content: '·'; color: var(--salvia); font-weight: 700; }
+
+    .fase-foco { font-size: 0.75rem; color: var(--texto-suave); font-style: italic; line-height: 1.5; border-top: 1px solid var(--creme); padding-top: 10px; }
+
+    /* Simulador */
+    .simulador-wrap {
+      background: var(--musgo);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .simulador-header {
+      padding: 24px 32px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .simulador-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; font-weight: 300; margin-bottom: 2px; }
+    .simulador-sub { font-size: 0.75rem; color: var(--salvia); }
+
+    .simulador-body { padding: 24px 32px 32px; }
+
+    .sim-input-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .sim-input-row label { font-size: 0.8rem; color: var(--salvia); font-weight: 500; white-space: nowrap; }
+
+    .sim-input-row input[type=range] {
+      flex: 1;
+      min-width: 160px;
+      accent-color: var(--terracota);
+      height: 4px;
+      cursor: pointer;
+    }
+
+    .sim-valor-badge {
+      background: var(--terracota);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 4px 14px;
+      border-radius: 100px;
+      min-width: 48px;
+      text-align: center;
+    }
+
+    .sim-resultado-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .sim-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .sim-card.sim-card-accent { background: rgba(255,255,255,0.12); }
+    .sim-card.sim-card-total { background: var(--terracota); border-color: var(--terracota); grid-column: span 1; }
+
+    .sim-card-label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--salvia); margin-bottom: 6px; font-weight: 600; }
+    .sim-card-total .sim-card-label { color: rgba(255,255,255,0.8); }
+    .sim-card-valor { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #fff; }
+
+    /* Referências fixas */
+    .sim-refs {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .sim-ref {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--salvia);
+    }
+
+    .sim-ref-dest { color: var(--ambar); font-weight: 700; }
+    .sim-ref-sep { opacity: 0.5; }
+    .sim-ref-total { font-weight: 600; }
+
+    /* Responsivo metas */
+    @media (max-width: 900px) {
+      .section-metas { padding: 60px 32px; }
+      .fases-grid { grid-template-columns: 1fr; }
+      .sim-resultado-grid { grid-template-columns: repeat(2, 1fr); }
+      .sim-card.sim-card-total { grid-column: span 2; }
+      .meta-resumo-sep { display: none; }
+    }
+
+    @media (max-width: 540px) {
+      .section-metas { padding: 48px 20px; }
+      .sim-resultado-grid { grid-template-columns: 1fr 1fr; }
+      .simulador-body, .simulador-header { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
@@ -657,19 +942,179 @@
       <div class="section-line"></div>
     </div>
     <div class="pending-list">
-      <div class="pending-item" data-key="pp_checkout_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 AMANHÃ · 26/05</strong> Configurar checkout do produto na Kiwify — página de pagamento, lotes e link de compra</span></div>
-      <div class="pending-item" data-key="pp_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Cadastrar imersão na Kiwify — produto, lotes e página de obrigado com link do grupo WhatsApp</span></div>
-      <div class="pending-item" data-key="pp_criativos"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Criar criativos de lançamento — arte de feed, vídeo de convite, criativo pago Meta Ads</span></div>
-      <div class="pending-item" data-key="pp_convite"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Enviar convite via WhatsApp para alunas do Mapa da Sua Viagem (acesso gratuito)</span></div>
-      <div class="pending-item" data-key="pp_metaads"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Subir campanha Meta Ads — objetivo: conversão na página de inscrição</span></div>
-      <div class="pending-item" data-key="pp_verba"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Distribuir verba de R$ 500 (expansível +R$ 500) por lote e definir custo por lead alvo</span></div>
-      <div class="pending-item" data-key="pp_foto"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Foto da Bruna em alta para substituir placeholder na página de vendas</span></div>
-      <div class="pending-item" data-key="pp_artes_lote"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Criar artes de virada de lote (stories) para 06/06, 13/06 e 20/06</span></div>
-      <div class="pending-item" data-key="pp_mentoria_nome"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Mentoria</strong> Definir nome e valor final — ancoragem R$ 3.997, lançamento R$ 1.997</span></div>
-      <div class="pending-item" data-key="pp_mentoria_pitch"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Mentoria</strong> Montar pitch do último bloco e slide de oferta ao vivo</span></div>
-      <div class="pending-item" data-key="pp_slides"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Pré-evento</strong> Preparar slides da imersão — 10 passos + quadro comparativo ao vivo</span></div>
-      <div class="pending-item" data-key="pp_aquecimento"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Pré-evento</strong> Montar sequência de aquecimento no grupo WhatsApp (14 a 19/06)</span></div>
+      <div class="pending-item done" data-key="pp_checkout_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 AMANHÃ · 26/05</strong> Configurar checkout do produto na Kiwify — página de pagamento, lotes e link de compra</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
+      <div class="pending-item" data-key="pp_kiwify"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Cadastrar imersão na Kiwify — produto, lotes e página de obrigado com link do grupo WhatsApp</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
+      <div class="pending-item" data-key="pp_criativos"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Criar criativos de lançamento — arte de feed, vídeo de convite, criativo pago Meta Ads</span><span class="owner-tag owner-luis">🎯 Luis G.</span></div>
+      <div class="pending-item" data-key="pp_convite"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#e53e3e"></div><span class="item-text"><strong style="color:#e53e3e; margin-right:8px;">🔴 Urgente · até 27/05</strong> Enviar convite via WhatsApp para alunas do Mapa da Sua Viagem (acesso gratuito) — Bruna escreve, Carol envia</span><span class="owner-tag owner-ambos">✍️ Bruna · 📤 Carol</span></div>
+      <div class="pending-item" data-key="pp_metaads"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Subir campanha Meta Ads — objetivo: conversão na página de inscrição</span><span class="owner-tag owner-luis">🎯 Luis G.</span></div>
+      <div class="pending-item" data-key="pp_verba"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Distribuir verba de R$ 500 (expansível +R$ 500) por lote e definir custo por lead alvo</span><span class="owner-tag owner-luis">🎯 Luis G.</span></div>
+      <div class="pending-item" data-key="pp_artes_lote"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#D97A3A"></div><span class="item-text"><strong style="color:#D97A3A; margin-right:8px;">🟡 Em breve</strong> Criar artes de virada de lote (stories) para 06/06, 13/06 e 20/06</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
+      <div class="pending-item" data-key="pp_mentoria_nome"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Mentoria</strong> Definir nome e valor final — ancoragem R$ 3.997, lançamento R$ 1.997</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
+      <div class="pending-item" data-key="pp_mentoria_pitch"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Mentoria</strong> Montar pitch do último bloco e slide de oferta ao vivo</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
+      <div class="pending-item" data-key="pp_slides"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Pré-evento</strong> Preparar slides da imersão — 10 passos + quadro comparativo ao vivo</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
+      <div class="pending-item" data-key="pp_aquecimento"><div class="item-check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="dot" style="background:#4A90D9"></div><span class="item-text"><strong style="color:#4A90D9; margin-right:8px;">🔵 Pré-evento</strong> Montar sequência de aquecimento no grupo WhatsApp (14 a 19/06)</span><span class="owner-tag owner-bruna">👩‍💼 Bruna</span></div>
     </div>
+  </section>
+
+  <!-- ═══════ METAS DE VENDAS ═══════ -->
+  <section class="section-metas">
+
+    <!-- Cabeçalho geral -->
+    <div class="section-header">
+      <h2 class="section-title">Metas de Vendas</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Resumo geral -->
+    <div class="meta-resumo">
+      <div class="meta-resumo-item">
+        <span class="meta-resumo-label">Meta total</span>
+        <span class="meta-resumo-valor">300+ inscritos</span>
+      </div>
+      <div class="meta-resumo-sep"></div>
+      <div class="meta-resumo-item">
+        <span class="meta-resumo-label">Data da imersão</span>
+        <span class="meta-resumo-valor">20 de junho</span>
+      </div>
+      <div class="meta-resumo-sep"></div>
+      <div class="meta-resumo-item">
+        <span class="meta-resumo-label">Captação</span>
+        <span class="meta-resumo-valor">24 dias</span>
+      </div>
+    </div>
+
+    <!-- Barra de progresso geral -->
+    <div class="meta-progress-wrap">
+      <div class="meta-progress-header">
+        <span class="meta-progress-label">Inscritos hoje</span>
+        <span class="meta-progress-count"><span id="inscritos-count">0</span> / 300</span>
+      </div>
+      <div class="meta-progress-track">
+        <div class="meta-progress-fill" id="meta-progress-fill" style="width:0%"></div>
+        <div class="meta-phase-marker" style="left: 26.7%">
+          <span class="meta-phase-tip">Fase 1 · 80</span>
+        </div>
+        <div class="meta-phase-marker" style="left: 50%">
+          <span class="meta-phase-tip">Fase 2 · 150</span>
+        </div>
+      </div>
+      <div class="meta-progress-input-row">
+        <label for="inscritos-input">Atualizar inscritos:</label>
+        <input type="number" id="inscritos-input" min="0" max="500" placeholder="0" />
+        <button onclick="atualizarInscritos()">Atualizar</button>
+      </div>
+    </div>
+
+    <!-- Fases -->
+    <div class="fases-grid">
+
+      <div class="fase-card fase-1">
+        <div class="fase-header">
+          <span class="fase-num">Fase 1</span>
+          <span class="fase-periodo">Dias 1–7</span>
+        </div>
+        <div class="fase-titulo">Aquecimento</div>
+        <div class="fase-meta">Meta: <strong>80 inscritos</strong></div>
+        <div class="fase-lote">Lote 1 · R$ 37</div>
+        <ul class="fase-canais">
+          <li>WhatsApp lista quente</li>
+          <li>Instagram orgânico</li>
+          <li>Tráfego frio</li>
+        </ul>
+        <p class="fase-foco">Identificação com a dor de travar, curiosidade, abertura de lote 1</p>
+      </div>
+
+      <div class="fase-card fase-2">
+        <div class="fase-header">
+          <span class="fase-num">Fase 2</span>
+          <span class="fase-periodo">Dias 8–17</span>
+        </div>
+        <div class="fase-titulo">Prova e Desejo</div>
+        <div class="fase-meta">Meta: <strong>150 inscritos</strong> acumulados</div>
+        <div class="fase-lote">Virada Lote 1→2 · R$ 57</div>
+        <ul class="fase-canais">
+          <li>Reels de prova social</li>
+          <li>Carrossel</li>
+          <li>Retargeting</li>
+        </ul>
+        <p class="fase-foco">Quebra de crença, prova social feminina, urgência de lote</p>
+      </div>
+
+      <div class="fase-card fase-3">
+        <div class="fase-header">
+          <span class="fase-num">Fase 3</span>
+          <span class="fase-periodo">Dias 18–24</span>
+        </div>
+        <div class="fase-titulo">Urgência Final</div>
+        <div class="fase-meta">Meta: <strong>300 inscritos</strong> acumulados</div>
+        <div class="fase-lote">Virada Lote 2→3 · R$ 77</div>
+        <ul class="fase-canais">
+          <li>Stories diários + countdown</li>
+          <li>WhatsApp último dia</li>
+          <li>Escalar tráfego pago</li>
+        </ul>
+        <p class="fase-foco">Converter indecisos, maximizar presença no dia 20/06 para o pitch do CEP</p>
+      </div>
+
+    </div>
+
+    <!-- Simulador de Receita -->
+    <div class="simulador-wrap">
+      <div class="simulador-header">
+        <h3 class="simulador-titulo">Simulação de Receita — Dia 20/06</h3>
+        <p class="simulador-sub">Baseado em conv. CEP de 10% · R$ 1.997/aluna</p>
+      </div>
+      <div class="simulador-body">
+        <!-- Slider / input -->
+        <div class="sim-input-row">
+          <label for="sim-slider">Inscritos simulados:</label>
+          <input type="range" id="sim-slider" min="0" max="500" value="0" step="10" oninput="calcularReceita(this.value)" />
+          <span id="sim-valor-inscritos" class="sim-valor-badge">0</span>
+        </div>
+        <!-- Resultado em tempo real -->
+        <div class="sim-resultado-grid">
+          <div class="sim-card">
+            <span class="sim-card-label">Inscritos</span>
+            <span class="sim-card-valor" id="sim-inscritos">0</span>
+          </div>
+          <div class="sim-card sim-card-accent">
+            <span class="sim-card-label">Receita Imersão</span>
+            <span class="sim-card-valor" id="sim-receita-imersao">R$ 0</span>
+          </div>
+          <div class="sim-card">
+            <span class="sim-card-label">Conversão CEP (10%)</span>
+            <span class="sim-card-valor" id="sim-conv-cep">0 alunas</span>
+          </div>
+          <div class="sim-card sim-card-accent">
+            <span class="sim-card-label">Receita CEP</span>
+            <span class="sim-card-valor" id="sim-receita-cep">R$ 0</span>
+          </div>
+          <div class="sim-card sim-card-total">
+            <span class="sim-card-label">Total</span>
+            <span class="sim-card-valor" id="sim-total">R$ 0</span>
+          </div>
+        </div>
+        <!-- Referências fixas -->
+        <div class="sim-refs">
+          <div class="sim-ref">
+            <span class="sim-ref-inscritos">100</span>
+            <span class="sim-ref-sep">→</span>
+            <span class="sim-ref-total">R$ 25.670</span>
+          </div>
+          <div class="sim-ref sim-ref-dest">
+            <span class="sim-ref-inscritos">300 🎯</span>
+            <span class="sim-ref-sep">→</span>
+            <span class="sim-ref-total">R$ 77.010</span>
+          </div>
+          <div class="sim-ref">
+            <span class="sim-ref-inscritos">500</span>
+            <span class="sim-ref-sep">→</span>
+            <span class="sim-ref-total">R$ 128.350</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ═══════ FOOTER ═══════ -->
@@ -714,6 +1159,69 @@
         saveState();
       });
     });
+
+    /* ── METAS: barra de progresso ── */
+    var INSCRITOS_KEY = 'imersao_inscritos_v1';
+
+    function atualizarBarra(n) {
+      n = Math.max(0, Math.min(500, n));
+      var pct = Math.min(100, (n / 300) * 100);
+      document.getElementById('meta-progress-fill').style.width = pct + '%';
+      document.getElementById('inscritos-count').textContent = n;
+      // sincroniza slider do simulador também
+      var slider = document.getElementById('sim-slider');
+      if (slider.value != n) { slider.value = n; calcularReceita(n); }
+    }
+
+    function atualizarInscritos() {
+      var val = parseInt(document.getElementById('inscritos-input').value) || 0;
+      atualizarBarra(val);
+      localStorage.setItem(INSCRITOS_KEY, val);
+    }
+
+    /* ── METAS: simulador de receita ── */
+    function fmt(v) {
+      return 'R$ ' + v.toLocaleString('pt-BR');
+    }
+
+    function calcularReceita(inscritos) {
+      inscritos = parseInt(inscritos) || 0;
+
+      // Ticket médio ponderado por lote
+      // Lote 1 R$37 (0-80), Lote 2 R$57 (81-150), Lote 3 R$77 (151+)
+      var receitaImersao = 0;
+      if (inscritos <= 80) {
+        receitaImersao = inscritos * 37;
+      } else if (inscritos <= 150) {
+        receitaImersao = (80 * 37) + ((inscritos - 80) * 57);
+      } else {
+        receitaImersao = (80 * 37) + (70 * 57) + ((inscritos - 150) * 77);
+      }
+
+      var convCep = Math.round(inscritos * 0.10);
+      var receitaCep = convCep * 1997;
+      var total = receitaImersao + receitaCep;
+
+      document.getElementById('sim-inscritos').textContent = inscritos;
+      document.getElementById('sim-receita-imersao').textContent = fmt(receitaImersao);
+      document.getElementById('sim-conv-cep').textContent = convCep + ' alunas';
+      document.getElementById('sim-receita-cep').textContent = fmt(receitaCep);
+      document.getElementById('sim-total').textContent = fmt(total);
+      document.getElementById('sim-valor-inscritos').textContent = inscritos;
+
+      // atualiza barra de progresso junto
+      atualizarBarra(inscritos);
+      localStorage.setItem(INSCRITOS_KEY, inscritos);
+    }
+
+    // Carrega inscritos salvos
+    (function() {
+      var saved = parseInt(localStorage.getItem(INSCRITOS_KEY)) || 0;
+      document.getElementById('inscritos-input').value = saved;
+      document.getElementById('sim-slider').value = saved;
+      atualizarBarra(saved);
+      calcularReceita(saved);
+    })();
   </script>
 </body>
 </html>
