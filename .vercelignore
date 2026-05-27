@@ -6,10 +6,9 @@
 *.mkv
 *.webm
 
-# Imagens grandes / logos soltas na raiz
-logo fundo verde.png
-logo para whatsapp.png
-mockup.png
+# Imagens grandes / logos soltas na raiz (só da raiz do projeto)
+/logo fundo verde.png
+/logo para whatsapp.png
 
 # Pastas de mídia local
 CRIATIVOS/

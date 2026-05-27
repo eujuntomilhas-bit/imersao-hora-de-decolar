@@ -9,7 +9,7 @@
 # Imagens grandes / logos soltas na raiz
 logo fundo verde.png
 logo para whatsapp.png
-mockup.png
+/mockup.png
 
 # Pastas de mídia local
 CRIATIVOS/
@@ -19,3 +19,5 @@ fotos/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+.vercel
