@@ -8,6 +8,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/page.css" />
+  <style>
+    .btn-drive {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #4f6f52;
+      color: #fff !important;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+    }
+    .btn-drive:hover { background: #3d5740; }
+  </style>
 </head>
 <body>
 
@@ -47,23 +65,7 @@
       <a href="https://drive.google.com/drive/folders/1kjeV6DntaiL1QHyYhwVR_EcrTBORJzIw?usp=drive_link"
          target="_blank"
          rel="noopener noreferrer"
-         style="
-           display: inline-flex;
-           align-items: center;
-           gap: 10px;
-           background: var(--musgo);
-           color: #fff;
-           text-decoration: none;
-           padding: 14px 28px;
-           border-radius: 8px;
-           font-family: 'Roboto', sans-serif;
-           font-weight: 600;
-           font-size: 1rem;
-           letter-spacing: 0.02em;
-           transition: background 0.2s;
-         "
-         onmouseover="this.style.background='#3d5740'"
-         onmouseout="this.style.background='var(--musgo)'"
+         class="btn-drive"
       >
         📂 Abrir pasta de criativos no Drive
       </a>
