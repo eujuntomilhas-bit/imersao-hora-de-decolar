@@ -1323,8 +1323,38 @@
   </footer>
 
   <script>
-    /* ── CHAVES LOCALSTORAGE ── */
-    var INSCRITOS_KEY = 'imersao_inscritos_v1';
+    /* ── SUPABASE CONFIG ── */
+    var SB_URL = 'https://wzbpbczihsopcdnzzsps.supabase.co';
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6YnBiY3ppaHNvcGNkbnp6c3BzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk4NTEzODUsImV4cCI6MjA5NTQyNzM4NX0.WquIRvfDww8pHLJ8QuIisZlYVkd9aOY2kr0jcFIMCtw';
+
+    function sbHeaders() {
+      return {
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      };
+    }
+
+    async function sbGet(tabela, query) {
+      var res = await fetch(SB_URL + '/rest/v1/' + tabela + '?' + (query || 'select=*'), { headers: sbHeaders() });
+      return res.json();
+    }
+
+    async function sbUpsert(tabela, body) {
+      var headers = Object.assign({}, sbHeaders(), { 'Prefer': 'resolution=merge-duplicates,return=representation' });
+      var res = await fetch(SB_URL + '/rest/v1/' + tabela, {
+        method: 'POST', headers: headers, body: JSON.stringify(body)
+      });
+      return res.json();
+    }
+
+    async function sbDelete(tabela, query) {
+      var res = await fetch(SB_URL + '/rest/v1/' + tabela + '?' + query, {
+        method: 'DELETE', headers: sbHeaders()
+      });
+      return res.ok;
+    }
 
     /* ── METAS: barra de progresso ── */
     function atualizarBarra(n) {
@@ -1337,20 +1367,7 @@
     }
 
     /* ── HISTÓRICO DIÁRIO ── */
-    const HIST_KEY = 'imersao_historico_v1';
-
-    function histLoad() {
-      try { return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }
-      catch(e) { return []; }
-    }
-
-    function histSave(data) {
-      localStorage.setItem(HIST_KEY, JSON.stringify(data));
-    }
-
-    function histRender() {
-      var data = histLoad();
-      // ordena por data
+    function histRender(data) {
       data.sort(function(a, b) { return a.data.localeCompare(b.data); });
 
       var grafico = document.getElementById('hist-grafico');
@@ -1364,23 +1381,21 @@
       if (data.length === 0) {
         tabela.style.display = 'none';
         empty.style.display  = 'block';
+        atualizarBarra(0);
         return;
       }
 
       tabela.style.display = 'table';
       empty.style.display  = 'none';
 
-      // calcula máximo para escalar as barras
       var maxQtd = Math.max.apply(null, data.map(function(d) { return d.qtd; }));
       var acum   = 0;
 
-      data.forEach(function(d, i) {
+      data.forEach(function(d) {
         acum += d.qtd;
 
-        // barra do gráfico
-        var pct    = maxQtd > 0 ? Math.round((d.qtd / maxQtd) * 64) : 4;
-        var label  = d.data.slice(5).replace('-', '/'); // MM/DD → DD/MM
-        var parts  = d.data.split('-');
+        var pct     = maxQtd > 0 ? Math.round((d.qtd / maxQtd) * 64) : 4;
+        var parts   = d.data.split('-');
         var labelBR = parts[2] + '/' + parts[1];
 
         var barWrap = document.createElement('div');
@@ -1391,98 +1406,66 @@
           '<div class="hist-bar-label">' + labelBR + '</div>';
         grafico.appendChild(barWrap);
 
-        // linha da tabela
         var tr = document.createElement('tr');
         tr.innerHTML =
           '<td>' + labelBR + '</td>' +
           '<td style="font-weight:600; color:var(--musgo);">+ ' + d.qtd + '</td>' +
           '<td>' + acum + '</td>' +
-          '<td><button class="hist-del-btn" onclick="removerDia(' + i + ')" title="Remover">✕</button></td>';
+          '<td><button class="hist-del-btn" onclick="removerDia(\'' + d.data + '\')" title="Remover">✕</button></td>';
         tbody.appendChild(tr);
       });
 
-      // atualiza barra de progresso principal com o total acumulado
       atualizarBarra(acum);
-      localStorage.setItem(INSCRITOS_KEY, acum);
     }
 
-    function adicionarDia() {
+    async function histCarregar() {
+      var data = await sbGet('historico_inscritos', 'select=data,qtd&order=data.asc');
+      histRender(Array.isArray(data) ? data : []);
+    }
+
+    async function adicionarDia() {
       var dataVal = document.getElementById('hist-data').value;
       var qtdVal  = parseInt(document.getElementById('hist-qtd').value) || 0;
 
       if (!dataVal) { alert('Selecione uma data.'); return; }
       if (qtdVal < 0) { alert('Quantidade não pode ser negativa.'); return; }
 
-      var data = histLoad();
+      var btn = document.querySelector('.historico-add-row button');
+      btn.textContent = '...';
+      btn.disabled = true;
 
-      // se já existe a data, substitui
-      var idx = data.findIndex(function(d) { return d.data === dataVal; });
-      if (idx >= 0) {
-        data[idx].qtd = qtdVal;
-      } else {
-        data.push({ data: dataVal, qtd: qtdVal });
-      }
-
-      histSave(data);
-      histRender();
+      await sbUpsert('historico_inscritos', { data: dataVal, qtd: qtdVal });
 
       document.getElementById('hist-qtd').value  = '';
-      document.getElementById('hist-data').value = '';
+      btn.textContent = '+ Adicionar';
+      btn.disabled = false;
+
+      await histCarregar();
     }
 
-    function removerDia(idx) {
-      var data = histLoad();
-      data.sort(function(a, b) { return a.data.localeCompare(b.data); });
-      data.splice(idx, 1);
-      histSave(data);
-      histRender();
+    async function removerDia(dataVal) {
+      await sbDelete('historico_inscritos', 'data=eq.' + dataVal);
+      await histCarregar();
     }
 
-    // Pré-preenche a data de hoje no campo
-    (function() {
-      var hoje = new Date();
-      var iso  = hoje.toISOString().slice(0, 10);
-      document.getElementById('hist-data').value = iso;
-    })();
-
-    histRender();
-
-    const PP_KEY = 'imersao_proximos_v2';
-
-    function saveState() {
-      const pp = {};
-      document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
-        pp[el.getAttribute('data-key')] = el.classList.contains('done');
-      });
-      localStorage.setItem(PP_KEY, JSON.stringify(pp));
-    }
-
-    function loadState() {
-      var raw = localStorage.getItem(PP_KEY);
-      if (!raw) return;
-      var pp = JSON.parse(raw);
+    /* ── CHECKLIST DE PRÓXIMOS PASSOS ── */
+    async function checklistCarregar() {
+      var rows = await sbGet('checklist', 'select=chave,feito');
+      if (!Array.isArray(rows)) return;
+      var mapa = {};
+      rows.forEach(function(r) { mapa[r.chave] = r.feito; });
       document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
         var key = el.getAttribute('data-key');
-        if (pp[key] === true) {
-          el.classList.add('done');
-        }
+        if (mapa[key] === true) el.classList.add('done');
+        else el.classList.remove('done');
       });
     }
 
-    // DOM já está pronto (script no final do body)
-    loadState();
-
-    document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
-      el.addEventListener('click', function() {
-        el.classList.toggle('done');
-        saveState();
-      });
-    });
-
-    function atualizarInscritos() {
-      var val = parseInt(document.getElementById('inscritos-input').value) || 0;
-      atualizarBarra(val);
-      localStorage.setItem(INSCRITOS_KEY, val);
+    async function toggleChecklist(el) {
+      var key   = el.getAttribute('data-key');
+      var feito = !el.classList.contains('done');
+      el.classList.toggle('done');
+      await sbUpsert('checklist', { chave: key, feito: feito });
     }
 
     /* ── METAS: simulador de receita ── */
@@ -1492,34 +1475,41 @@
 
     function calcularReceita(inscritos) {
       inscritos = parseInt(inscritos) || 0;
-
-      // Ticket médio R$ 57
       var receitaImersao = inscritos * 57;
+      var convCep        = Math.round(inscritos * 0.10);
+      var receitaCep     = convCep * 1997;
+      var total          = receitaImersao + receitaCep;
 
-      var convCep = Math.round(inscritos * 0.10);
-      var receitaCep = convCep * 1997;
-      var total = receitaImersao + receitaCep;
+      document.getElementById('sim-inscritos').textContent        = inscritos;
+      document.getElementById('sim-receita-imersao').textContent  = fmt(receitaImersao);
+      document.getElementById('sim-conv-cep').textContent         = convCep + ' alunas';
+      document.getElementById('sim-receita-cep').textContent      = fmt(receitaCep);
+      document.getElementById('sim-total').textContent            = fmt(total);
+      document.getElementById('sim-valor-inscritos').textContent  = inscritos;
 
-      document.getElementById('sim-inscritos').textContent = inscritos;
-      document.getElementById('sim-receita-imersao').textContent = fmt(receitaImersao);
-      document.getElementById('sim-conv-cep').textContent = convCep + ' alunas';
-      document.getElementById('sim-receita-cep').textContent = fmt(receitaCep);
-      document.getElementById('sim-total').textContent = fmt(total);
-      document.getElementById('sim-valor-inscritos').textContent = inscritos;
-
-      // atualiza barra de progresso junto
       atualizarBarra(inscritos);
-      localStorage.setItem(INSCRITOS_KEY, inscritos);
     }
 
-    // Carrega inscritos salvos
+    function atualizarInscritos() {
+      var val = parseInt(document.getElementById('inscritos-input').value) || 0;
+      atualizarBarra(val);
+    }
+
+    /* ── INICIALIZAÇÃO ── */
+    // Pré-preenche a data de hoje
     (function() {
-      var saved = parseInt(localStorage.getItem(INSCRITOS_KEY)) || 0;
-      document.getElementById('inscritos-input').value = saved;
-      document.getElementById('sim-slider').value = saved;
-      atualizarBarra(saved);
-      calcularReceita(saved);
+      var hoje = new Date();
+      document.getElementById('hist-data').value = hoje.toISOString().slice(0, 10);
     })();
+
+    // Vincula checklist ao Supabase (substitui localStorage)
+    document.querySelectorAll('.pending-item[data-key]').forEach(function(el) {
+      el.addEventListener('click', function() { toggleChecklist(el); });
+    });
+
+    // Carrega dados do Supabase
+    histCarregar();
+    checklistCarregar();
   </script>
 </body>
 </html>
