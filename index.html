@@ -761,6 +761,161 @@
     .sim-ref-sep { opacity: 0.5; }
     .sim-ref-total { font-weight: 600; }
 
+    /* ── HISTÓRICO DIÁRIO ───────────────────────────── */
+    .historico-wrap {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid rgba(79,111,82,0.1);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .historico-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(79,111,82,0.08);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .historico-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--musgo);
+    }
+
+    .historico-add-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .historico-add-row input[type=date],
+    .historico-add-row input[type=number] {
+      padding: 6px 10px;
+      border: 1.5px solid rgba(79,111,82,0.25);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--musgo);
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .historico-add-row input[type=number] { width: 80px; }
+    .historico-add-row input:focus { border-color: var(--musgo); }
+
+    .historico-add-row button {
+      padding: 6px 16px;
+      background: var(--musgo);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .historico-add-row button:hover { background: #3a5540; }
+
+    .historico-body { padding: 0 24px 20px; }
+
+    .historico-grafico {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 80px;
+      padding: 16px 0 8px;
+      overflow-x: auto;
+    }
+
+    .hist-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      flex-shrink: 0;
+      min-width: 36px;
+    }
+
+    .hist-bar {
+      width: 28px;
+      border-radius: 4px 4px 0 0;
+      background: var(--salvia);
+      transition: height 0.4s ease;
+      min-height: 4px;
+      position: relative;
+      cursor: default;
+    }
+
+    .hist-bar:hover { background: var(--musgo); }
+
+    .hist-bar-label {
+      font-size: 0.6rem;
+      color: var(--texto-suave);
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .hist-bar-val {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--musgo);
+      text-align: center;
+    }
+
+    .historico-tabela {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 8px;
+    }
+
+    .historico-tabela th {
+      text-align: left;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--texto-suave);
+      font-weight: 600;
+      padding: 6px 8px;
+      border-bottom: 1px solid var(--creme);
+    }
+
+    .historico-tabela td {
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--creme);
+      color: var(--texto);
+    }
+
+    .historico-tabela tr:last-child td { border-bottom: none; }
+
+    .hist-del-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.9rem;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+
+    .hist-del-btn:hover { color: #e53e3e; }
+
+    .historico-empty {
+      text-align: center;
+      color: var(--texto-suave);
+      font-size: 0.82rem;
+      padding: 24px 0 8px;
+      font-style: italic;
+    }
+
     /* Responsivo metas */
     @media (max-width: 900px) {
       .section-metas { padding: 60px 32px; }
@@ -774,6 +929,7 @@
       .section-metas { padding: 48px 20px; }
       .sim-resultado-grid { grid-template-columns: 1fr 1fr; }
       .simulador-body, .simulador-header { padding-left: 20px; padding-right: 20px; }
+      .historico-header { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -1015,6 +1171,35 @@
       </div>
     </div>
 
+    <!-- Histórico diário -->
+    <div class="historico-wrap">
+      <div class="historico-header">
+        <span class="historico-titulo">📅 Inscritos por dia</span>
+        <div class="historico-add-row">
+          <input type="date" id="hist-data" />
+          <input type="number" id="hist-qtd" min="0" max="500" placeholder="qtd" />
+          <button onclick="adicionarDia()">+ Adicionar</button>
+        </div>
+      </div>
+      <div class="historico-body">
+        <div class="historico-grafico" id="hist-grafico"></div>
+        <div id="hist-tabela-wrap">
+          <p class="historico-empty" id="hist-empty">Nenhum registro ainda — adicione o primeiro dia acima.</p>
+          <table class="historico-tabela" id="hist-tabela" style="display:none">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Inscritos no dia</th>
+                <th>Acumulado</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="hist-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- Fases -->
     <div class="fases-grid">
 
@@ -1138,6 +1323,130 @@
   </footer>
 
   <script>
+    /* ── CHAVES LOCALSTORAGE ── */
+    var INSCRITOS_KEY = 'imersao_inscritos_v1';
+
+    /* ── METAS: barra de progresso ── */
+    function atualizarBarra(n) {
+      n = Math.max(0, Math.min(500, n));
+      var pct = Math.min(100, (n / 300) * 100);
+      document.getElementById('meta-progress-fill').style.width = pct + '%';
+      document.getElementById('inscritos-count').textContent = n;
+      var slider = document.getElementById('sim-slider');
+      if (slider.value != n) { slider.value = n; calcularReceita(n); }
+    }
+
+    /* ── HISTÓRICO DIÁRIO ── */
+    const HIST_KEY = 'imersao_historico_v1';
+
+    function histLoad() {
+      try { return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }
+      catch(e) { return []; }
+    }
+
+    function histSave(data) {
+      localStorage.setItem(HIST_KEY, JSON.stringify(data));
+    }
+
+    function histRender() {
+      var data = histLoad();
+      // ordena por data
+      data.sort(function(a, b) { return a.data.localeCompare(b.data); });
+
+      var grafico = document.getElementById('hist-grafico');
+      var tbody   = document.getElementById('hist-tbody');
+      var tabela  = document.getElementById('hist-tabela');
+      var empty   = document.getElementById('hist-empty');
+
+      grafico.innerHTML = '';
+      tbody.innerHTML   = '';
+
+      if (data.length === 0) {
+        tabela.style.display = 'none';
+        empty.style.display  = 'block';
+        return;
+      }
+
+      tabela.style.display = 'table';
+      empty.style.display  = 'none';
+
+      // calcula máximo para escalar as barras
+      var maxQtd = Math.max.apply(null, data.map(function(d) { return d.qtd; }));
+      var acum   = 0;
+
+      data.forEach(function(d, i) {
+        acum += d.qtd;
+
+        // barra do gráfico
+        var pct    = maxQtd > 0 ? Math.round((d.qtd / maxQtd) * 64) : 4;
+        var label  = d.data.slice(5).replace('-', '/'); // MM/DD → DD/MM
+        var parts  = d.data.split('-');
+        var labelBR = parts[2] + '/' + parts[1];
+
+        var barWrap = document.createElement('div');
+        barWrap.className = 'hist-bar-wrap';
+        barWrap.innerHTML =
+          '<div class="hist-bar-val">' + d.qtd + '</div>' +
+          '<div class="hist-bar" style="height:' + pct + 'px" title="' + labelBR + ': ' + d.qtd + ' inscritos"></div>' +
+          '<div class="hist-bar-label">' + labelBR + '</div>';
+        grafico.appendChild(barWrap);
+
+        // linha da tabela
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>' + labelBR + '</td>' +
+          '<td style="font-weight:600; color:var(--musgo);">+ ' + d.qtd + '</td>' +
+          '<td>' + acum + '</td>' +
+          '<td><button class="hist-del-btn" onclick="removerDia(' + i + ')" title="Remover">✕</button></td>';
+        tbody.appendChild(tr);
+      });
+
+      // atualiza barra de progresso principal com o total acumulado
+      atualizarBarra(acum);
+      localStorage.setItem(INSCRITOS_KEY, acum);
+    }
+
+    function adicionarDia() {
+      var dataVal = document.getElementById('hist-data').value;
+      var qtdVal  = parseInt(document.getElementById('hist-qtd').value) || 0;
+
+      if (!dataVal) { alert('Selecione uma data.'); return; }
+      if (qtdVal < 0) { alert('Quantidade não pode ser negativa.'); return; }
+
+      var data = histLoad();
+
+      // se já existe a data, substitui
+      var idx = data.findIndex(function(d) { return d.data === dataVal; });
+      if (idx >= 0) {
+        data[idx].qtd = qtdVal;
+      } else {
+        data.push({ data: dataVal, qtd: qtdVal });
+      }
+
+      histSave(data);
+      histRender();
+
+      document.getElementById('hist-qtd').value  = '';
+      document.getElementById('hist-data').value = '';
+    }
+
+    function removerDia(idx) {
+      var data = histLoad();
+      data.sort(function(a, b) { return a.data.localeCompare(b.data); });
+      data.splice(idx, 1);
+      histSave(data);
+      histRender();
+    }
+
+    // Pré-preenche a data de hoje no campo
+    (function() {
+      var hoje = new Date();
+      var iso  = hoje.toISOString().slice(0, 10);
+      document.getElementById('hist-data').value = iso;
+    })();
+
+    histRender();
+
     const PP_KEY = 'imersao_proximos_v2';
 
     function saveState() {
@@ -1169,19 +1478,6 @@
         saveState();
       });
     });
-
-    /* ── METAS: barra de progresso ── */
-    var INSCRITOS_KEY = 'imersao_inscritos_v1';
-
-    function atualizarBarra(n) {
-      n = Math.max(0, Math.min(500, n));
-      var pct = Math.min(100, (n / 300) * 100);
-      document.getElementById('meta-progress-fill').style.width = pct + '%';
-      document.getElementById('inscritos-count').textContent = n;
-      // sincroniza slider do simulador também
-      var slider = document.getElementById('sim-slider');
-      if (slider.value != n) { slider.value = n; calcularReceita(n); }
-    }
 
     function atualizarInscritos() {
       var val = parseInt(document.getElementById('inscritos-input').value) || 0;
