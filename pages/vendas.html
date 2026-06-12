@@ -7,6 +7,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Gabriela&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1527384455441746');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'Imersao Hora de Decolar',
+  content_category: 'curso',
+  value: 37.00,
+  currency: 'BRL'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1527384455441746&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1088,7 +1111,7 @@
           <div class="valor"><sup>R$</sup>37</div>
           <div class="obs">O valor aumenta conforme a data da sua&nbsp;inscrição.<br>Garante agora no menor&nbsp;preço.</div>
         </div>
-        <a href="https://pay.kiwify.com.br/abdjXts" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap; width: 100%; justify-content: center; display:inline-flex;">Garanta sua vaga agora <span class="arr">→</span></a>
+        <a href="https://pay.kiwify.com.br/abdjXts" target="_blank" rel="noopener noreferrer" class="btn" onclick="fbq('track','InitiateCheckout',{value:37,currency:'BRL'})" style="font-size:1.1rem; padding: 20px 48px; white-space: nowrap; width: 100%; justify-content: center; display:inline-flex;">Garanta sua vaga agora <span class="arr">→</span></a>
       </div>
     </div>
   </section>
@@ -1098,7 +1121,7 @@
     <div class="d12-content">
       <h2>Sua viagem começa<br><span>nesta manhã.</span></h2>
       <p class="d12-sub">20 de junho · 09h00 · Ao vivo no Zoom<br>Uma manhã que vai mudar o resto da sua vida.</p>
-      <a href="https://pay.kiwify.com.br/abdjXts" target="_blank" rel="noopener noreferrer" class="btn">Quero garantir minha&nbsp;viagem <span class="arr">→</span></a>
+      <a href="https://pay.kiwify.com.br/abdjXts" target="_blank" rel="noopener noreferrer" class="btn" onclick="fbq('track','InitiateCheckout',{value:37,currency:'BRL'})">Quero garantir minha&nbsp;viagem <span class="arr">→</span></a>
     </div>
     <div class="d12-foto">
       <img src="../assets/fotos/captolio.jpg" alt="Bruna viajando" />
