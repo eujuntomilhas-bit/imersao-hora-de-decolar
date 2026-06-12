@@ -63,6 +63,8 @@ src="https://www.facebook.com/tr?id=1527384455441746&ev=PageView&noscript=1"
       background: var(--offwhite);
       color: var(--texto);
       overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
 
     /* ── NAV ──────────────────────────────── */
@@ -848,6 +850,90 @@ src="https://www.facebook.com/tr?id=1527384455441746&ev=PageView&noscript=1"
       footer { flex-direction: column; padding: 28px 24px; }
       footer p { text-align: left; }
     }
+
+    /* ── EXIT INTENT MODAL ───────────────────── */
+    .exit-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      display: none;
+      padding: 20px;
+    }
+
+    .exit-overlay.show { display: block; }
+
+    .exit-card {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 380px;
+      width: calc(100% - 40px);
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .exit-card h3 {
+      font-family: 'Gabriela', serif;
+      font-size: 28px;
+      color: var(--musgo);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .exit-card p {
+      font-size: 0.95rem;
+      color: var(--suave);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .exit-card input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 14px;
+    }
+
+    .exit-card .btn {
+      width: 100%;
+      justify-content: center;
+      align-self: stretch;
+      border: none;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      margin-top: 12px;
+    }
+
+    .exit-card .exit-close {
+      display: block;
+      margin: 16px auto 0;
+      font-size: 12px;
+      color: var(--suave);
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-align: center;
+    }
+
+    .exit-card .exit-msg {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .exit-card .exit-msg.success { color: var(--musgo); }
+    .exit-card .exit-msg.error { color: var(--terracota); }
   </style>
 </head>
 <body id="top">
@@ -1114,6 +1200,105 @@ src="https://www.facebook.com/tr?id=1527384455441746&ev=PageView&noscript=1"
     <img src="../assets/logo-verde.webp" alt="Imersão Hora de Decolar" loading="lazy" />
     <p><strong>Bruna Araujo Jorge</strong><br>@eujuntomilhas · Consultoria em Milhas Aéreas e Viagens</p>
   </footer>
+
+  <!-- ═══ EXIT INTENT MODAL ═══ -->
+  <div class="exit-overlay" id="exitOverlay">
+    <div class="exit-card">
+      <h3>Espera.</h3>
+      <p>A imersão é dia 20. Depois disso, acabou — não tem reprise. Se você fechar agora, perde.</p>
+      <form id="exitForm">
+        <input type="text" id="exitName" placeholder="Seu nome" required />
+        <input type="tel" id="exitPhone" placeholder="Seu WhatsApp com DDD" required />
+        <button type="submit" class="btn">Quero garantir minha vaga <span class="arr">→</span></button>
+      </form>
+      <div class="exit-msg" id="exitMsg" style="display:none;"></div>
+      <button type="button" class="exit-close" id="exitClose">Não, prefiro perder minha vaga</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var SESSION_KEY = 'exitIntentShown';
+      var CTA_KEY = 'ctaClicado';
+      var overlay = document.getElementById('exitOverlay');
+      var form = document.getElementById('exitForm');
+      var nameInput = document.getElementById('exitName');
+      var phoneInput = document.getElementById('exitPhone');
+      var msg = document.getElementById('exitMsg');
+      var closeBtn = document.getElementById('exitClose');
+
+      function markCtaClicked() {
+        sessionStorage.setItem(CTA_KEY, '1');
+      }
+
+      document.querySelectorAll('a.btn').forEach(function (el) {
+        el.addEventListener('click', markCtaClicked);
+      });
+
+      function canShow() {
+        return !sessionStorage.getItem(SESSION_KEY) && !sessionStorage.getItem(CTA_KEY);
+      }
+
+      function showModal() {
+        if (!canShow()) return;
+        var card = overlay.querySelector('.exit-card');
+        overlay.classList.add('show');
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var viewportHeight = window.innerHeight;
+        var cardHeight = card.offsetHeight;
+        card.style.top = (scrollTop + Math.max(20, (viewportHeight - cardHeight) / 2)) + 'px';
+        sessionStorage.setItem(SESSION_KEY, '1');
+      }
+
+      function hideModal() {
+        overlay.classList.remove('show');
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') showModal();
+      });
+
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY <= 0) showModal();
+      });
+
+      closeBtn.addEventListener('click', hideModal);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var nome = nameInput.value.trim();
+        var telefone = phoneInput.value.trim();
+        if (!nome || !telefone) return;
+
+        msg.style.display = 'none';
+        msg.className = 'exit-msg';
+
+        fetch('https://eujuntomilhas.app.n8n.cloud/webhook/exit-intent-imersao', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome: nome,
+            telefone: telefone,
+            origem: 'exit_intent_imersao',
+            pagina: 'vendas_imersao'
+          })
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Request failed');
+            form.style.display = 'none';
+            msg.textContent = 'Perfeito! Fala comigo se precisar de ajuda 😉';
+            msg.className = 'exit-msg success';
+            msg.style.display = 'block';
+            setTimeout(hideModal, 3000);
+          })
+          .catch(function () {
+            msg.textContent = 'Algo deu errado, tenta de novo.';
+            msg.className = 'exit-msg error';
+            msg.style.display = 'block';
+          });
+      });
+    })();
+  </script>
 
 </body>
 </html>
