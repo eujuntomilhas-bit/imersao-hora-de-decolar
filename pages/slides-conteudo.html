@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Slides — Mapa da Sua Viagem com Milhas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --musgo: #4F6F52;
+    --salvia: #8FAF9A;
+    --terracota: #D97A3A;
+    --ambar: #E6A15A;
+    --offwhite: #F4F1EC;
+    --texto: #2C2C2C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: var(--texto);
+    overflow: hidden;
+  }
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vh 8vw;
+    background: var(--offwhite);
+  }
+  .slide.active { display: flex; }
+  .slide .eyebrow {
+    font-family: 'Caveat', cursive;
+    color: var(--terracota);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    margin-bottom: 0.5em;
+  }
+  .slide h1 {
+    font-family: 'Gabriela', serif;
+    color: var(--musgo);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    line-height: 1.25;
+    margin-bottom: 0.9em;
+    max-width: 90%;
+    letter-spacing: 0.01em;
+  }
+  .slide ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85em;
+    max-width: 75%;
+  }
+  .slide ul li {
+    font-size: clamp(0.95rem, 1.7vw, 1.2rem);
+    color: var(--texto);
+    line-height: 1.55;
+    padding-left: 1.4em;
+    position: relative;
+  }
+  .slide ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--salvia);
+  }
+  .slide.intro { background: var(--musgo); }
+  .slide.intro .eyebrow { color: var(--ambar); }
+  .slide.intro h1 { color: #fff; }
+  .slide.intro ul li { color: var(--offwhite); }
+  .slide.intro ul li::before { background: var(--ambar); }
+
+  .slide.closing { background: var(--musgo); }
+  .slide.closing .eyebrow { color: var(--ambar); }
+  .slide.closing h1 { color: #fff; }
+  .slide.closing ul li { color: var(--offwhite); }
+  .slide.closing ul li::before { background: var(--ambar); }
+  .slide.closing .sub {
+    font-family: 'Gabriela', serif;
+    color: var(--ambar);
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    margin: 0.6em 0 0.3em;
+  }
+
+  .slide-num {
+    position: absolute;
+    bottom: 28px;
+    right: 36px;
+    font-size: 0.85rem;
+    color: var(--musgo);
+    opacity: 0.6;
+    font-weight: 600;
+  }
+  .slide.intro .slide-num, .slide.closing .slide-num { color: #fff; opacity: 0.7; }
+
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+  .nav button {
+    background: var(--musgo);
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: background 0.2s;
+  }
+  .nav button:hover { background: var(--terracota); }
+  .nav button:disabled { opacity: 0.35; cursor: default; }
+
+  .back-link {
+    position: fixed;
+    top: 18px;
+    left: 24px;
+    color: var(--musgo);
+    text-decoration: none;
+    font-size: 0.85rem;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<a href="area-aluna.html" class="back-link">← Voltar à área da aluna</a>
+
+<div class="deck" id="deck">
+
+  <section class="slide intro active">
+    <span class="eyebrow">Antes de começar</span>
+    <h1>O que você vai aprender hoje</h1>
+    <ul>
+      <li>Como descobrir quais companhias voam a sua rota — e por que esse é o passo que todo mundo pula</li>
+      <li>Como calcular o custo real de uma viagem: milhas + taxas + custo de produção</li>
+      <li>Como usar alianças e parcerias a seu favor — voar com uma companhia, emitir com milhas de outra</li>
+      <li>Qual programa rende mais para a sua rota específica</li>
+      <li>Como comparar programas sem se perder em 20 opções (Método dos 4)</li>
+      <li>Como monitorar passagens estrategicamente — quando buscar, com que frequência, quando emitir</li>
+      <li>Como não produzir milhas no programa errado</li>
+    </ul>
+    <span class="slide-num">1 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 1</span>
+    <h1>Descobrir quem faz esses voos</h1>
+    <ul>
+      <li>Entre no Google Flights, Skyscanner ou outro metabuscador</li>
+      <li>Pesquise a rota com 3 datas diferentes</li>
+      <li>Anote o que aparece sem conexão e o que aparece com conexão</li>
+      <li>Anote quais companhias estão operando esses voos</li>
+      <li>Resultado: você tem o "cardápio de companhias" da sua rota</li>
+    </ul>
+    <span class="slide-num">2 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 2</span>
+    <h1>A regra de ouro: quem opera ≠ quem emite</h1>
+    <ul>
+      <li>Operar = quem voa o avião</li>
+      <li>Emitir = com qual programa você troca milhas pelo bilhete</li>
+      <li>Você pode voar com uma companhia e emitir com milhas de outra</li>
+      <li>É aqui que as possibilidades — e a economia real — começam</li>
+    </ul>
+    <span class="slide-num">3 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 3</span>
+    <h1>Companhias parceiras dos programas nacionais</h1>
+    <ul>
+      <li>Smiles (GOL), LATAM Pass, Azul — cada um tem dezenas de parceiras</li>
+      <li>As 3 alianças mundiais (SkyTeam, Star Alliance, oneworld) ampliam ainda mais as opções</li>
+      <li>Você não fica preso a um único programa</li>
+      <li>O raciocínio é sempre o mesmo — só muda a lista de parceiras</li>
+    </ul>
+    <span class="slide-num">4 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 4</span>
+    <h1>Método dos 4 — escolher só 4 opções</h1>
+    <ul>
+      <li>Comparar 10 programas deixa qualquer pessoa travada</li>
+      <li>Comparar 4 dá clareza e leva à ação</li>
+      <li>Exemplo: LATAM Pass, Iberia, Flying Blue, Smiles</li>
+      <li>Você escolhe os 4 que fazem sentido para a sua rota</li>
+    </ul>
+    <span class="slide-num">5 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 5</span>
+    <h1>Buscar os valores brutos: milhas + taxas</h1>
+    <ul>
+      <li>Escolha 2, 3 ou 4 datas (ou uma janela)</li>
+      <li>Pesquise nos 4 programas escolhidos</li>
+      <li>Para cada busca, anote milhas necessárias e taxas</li>
+      <li>Disponibilidade muda, taxas existem, o mais barato nem sempre é o melhor</li>
+    </ul>
+    <span class="slide-num">6 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 6</span>
+    <h1>Analisar seu potencial de produção de milhas</h1>
+    <ul>
+      <li>Cada programa tem formas diferentes de produzir milhas (cartão, clube, compras bonificadas)</li>
+      <li>Esfera e Livelo têm deságios diferentes para cada programa parceiro</li>
+      <li>Bonificações de transferência podem mudar qual caminho vale mais a pena</li>
+      <li>A pergunta certa: onde eu produzo mais rápido e mais barato?</li>
+    </ul>
+    <span class="slide-num">7 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 7</span>
+    <h1>Dois caminhos: emitir agora ou montar estratégia</h1>
+    <ul>
+      <li>Caminho A — já tenho as milhas: ação é emitir</li>
+      <li>Caminho B — ainda não tenho: comprar milhas no momento certo ou monitorar até aparecer uma janela boa</li>
+      <li>Erro comum: monitorar uma única vez e achar que aquele é o único preço</li>
+      <li>Escolha certa: monitorar com frequência crescente conforme a data se aproxima</li>
+    </ul>
+    <span class="slide-num">8 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 8</span>
+    <h1>Smiles: Viaje Fácil — congelar tarifa em milhas</h1>
+    <ul>
+      <li>Permite reservar e garantir o preço mesmo sem ter as milhas na hora</li>
+      <li>Pagamento final até 60 dias antes do embarque</li>
+      <li>Cobra taxa de serviço, mas oferece flexibilidade de cancelamento</li>
+      <li>Ideal para quem encontra boa oferta e precisa de mais prazo para juntar milhas</li>
+    </ul>
+    <span class="slide-num">9 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 9</span>
+    <h1>Iberia: disponibilidade manda</h1>
+    <ul>
+      <li>Estoques compartilhados — poucos assentos disponíveis para milhas</li>
+      <li>Ter milhas não garante emissão se não houver disponibilidade</li>
+      <li>Pesquisar antes de produzir milhas evita produzir no programa errado</li>
+      <li>Transforma "juntar milhas" em objetivo palpável: quanto, para quê, até quando</li>
+    </ul>
+    <span class="slide-num">10 / 12</span>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow">Passo 10</span>
+    <h1>Produzir as milhas e emitir com estratégia</h1>
+    <ul>
+      <li>Concentre a produção em um programa de recompensas (Livelo, Esfera, Átomos)</li>
+      <li>Esses programas dão liberdade para transferir para vários programas de milhas</li>
+      <li>Isso reduz o risco — você transfere para onde estiver melhor</li>
+      <li>Achou a passagem e tem as milhas? É só emitir</li>
+    </ul>
+    <span class="slide-num">11 / 12</span>
+  </section>
+
+  <section class="slide closing">
+    <span class="eyebrow">Para fechar</span>
+    <h1>Rotina de monitoramento e regra de ouro</h1>
+    <p class="sub">Rotina de monitoramento</p>
+    <ul>
+      <li>6 meses de antecedência: 1 vez por semana</li>
+      <li>5 meses de antecedência: 1 vez a cada 4 dias</li>
+      <li>4 meses de antecedência: de 2 em 2 dias</li>
+    </ul>
+    <p class="sub">Regra de ouro do custo da viagem</p>
+    <ul>
+      <li>Quanto mais milhas orgânicas você produzir, mais barato fica a viagem</li>
+      <li>Compre milhas só em épocas apropriadas — nunca no preço cheio</li>
+    </ul>
+    <span class="slide-num">12 / 12</span>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn">← Anterior</button>
+  <button id="nextBtn">Próximo →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function show(index) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(index, slides.length - 1));
+    slides[current].classList.add('active');
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === slides.length - 1;
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => show(current + 1));
+  document.getElementById('prevBtn').addEventListener('click', () => show(current - 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') show(current + 1);
+    if (e.key === 'ArrowLeft') show(current - 1);
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material de Apoio — Mapa da Sua Viagem com Milhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Gabriela&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/page.css" />
+  <style>
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .field-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--verde-musgo);
+    }
+    .field-group input, .field-group textarea {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      padding: 10px 12px;
+      border: 1.5px solid #e5e1db;
+      border-radius: 8px;
+      background: var(--offwhite);
+      color: var(--texto);
+    }
+    .field-group input:focus, .field-group textarea:focus {
+      outline: none;
+      border-color: var(--verde-salvia);
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+    }
+    .fill-table input {
+      width: 100%;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.875rem;
+      padding: 6px 8px;
+      border: 1px solid #e5e1db;
+      border-radius: 6px;
+      background: var(--offwhite);
+    }
+    .step-question {
+      font-family: 'Gabriela', serif;
+      color: var(--terracota);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .conclusion-box {
+      background: var(--offwhite);
+      border: 1.5px dashed var(--verde-salvia);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+    .conclusion-box label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--verde-musgo);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .print-btn {
+      display: inline-block;
+      background: var(--verde-musgo);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 20px;
+    }
+    .print-btn:hover { background: var(--terracota); }
+    @media print {
+      .print-btn, header .back { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="area-aluna.html" class="back">← Voltar à área da aluna</a>
+    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="page-logo" />
+    <span class="tag">Material de apoio</span>
+    <h1>Mapa da Sua Viagem com Milhas</h1>
+    <p>Preencha durante a aula, passo a passo. No final, você chega na sua própria conclusão: qual programa e qual caminho seguir para a sua viagem.</p>
+  </header>
+
+  <main>
+
+    <button class="print-btn" onclick="window.print()">🖨 Imprimir / salvar em PDF</button>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 1</span></div>
+      <h2>Descobrir quem faz esses voos</h2>
+      <p class="step-question">Pesquise sua rota no Google Flights ou Skyscanner com 3 datas diferentes.</p>
+      <div class="field-group">
+        <label>Minha rota (origem → destino)</label>
+        <input type="text" placeholder="Ex: São Paulo → Paris" />
+      </div>
+      <div class="field-group">
+        <label>Companhias com voo direto</label>
+        <input type="text" placeholder="Ex: LATAM, Air France" />
+      </div>
+      <div class="field-group">
+        <label>Companhias com conexão</label>
+        <input type="text" placeholder="Ex: Iberia (via Madri), TAP (via Lisboa)" />
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 2</span></div>
+      <h2>Quem opera ≠ quem emite</h2>
+      <p class="step-question">Para cada companhia que opera o voo, anote com quais programas você pode emitir.</p>
+      <div class="field-group">
+        <label>Anotações</label>
+        <textarea rows="3" placeholder="Ex: voo operado pela Air France pode ser emitido via Flying Blue ou Smiles"></textarea>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 3</span></div>
+      <h2>Companhias parceiras dos programas nacionais</h2>
+      <p class="step-question">Liste as parceiras relevantes para a sua rota dentro de cada programa nacional.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label>Smiles</label>
+          <input type="text" />
+        </div>
+        <div class="field-group">
+          <label>LATAM Pass</label>
+          <input type="text" />
+        </div>
+        <div class="field-group">
+          <label>Azul</label>
+          <input type="text" />
+        </div>
+      </div>
+    </div>
+
+    <div class="block highlight">
+      <div class="block-header"><span class="block-num">Passo 4</span></div>
+      <h2>Método dos 4 — minhas 4 opções</h2>
+      <p class="step-question">Escolha só 4 programas para comparar. Sem isso, você se perde.</p>
+      <div class="field-row">
+        <div class="field-group"><label>Opção 1</label><input type="text" /></div>
+        <div class="field-group"><label>Opção 2</label><input type="text" /></div>
+        <div class="field-group"><label>Opção 3</label><input type="text" /></div>
+        <div class="field-group"><label>Opção 4</label><input type="text" /></div>
+      </div>
+    </div>
+
+    <div class="block highlight">
+      <div class="block-header"><span class="block-num">Passo 5</span></div>
+      <h2>Valores brutos: milhas + taxas</h2>
+      <p class="step-question">Pesquise nas mesmas datas, nos 4 programas escolhidos, e anote os números reais.</p>
+      <table class="fill-table">
+        <thead>
+          <tr><th>Programa</th><th>Milhas necessárias</th><th>Taxa</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 6</span></div>
+      <h2>Meu potencial de produção de milhas</h2>
+      <p class="step-question">Para cada programa, onde você consegue produzir milhas mais rápido e mais barato?</p>
+      <table class="fill-table">
+        <thead>
+          <tr><th>Programa</th><th>Forma de produção (cartão, clube, transferência)</th><th>Custo estimado</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+          <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block pitch">
+      <div class="block-header"><span class="block-num">Passo 7</span></div>
+      <h2>Meu caminho: emitir agora ou montar estratégia?</h2>
+      <p class="step-question">Com base nos passos 5 e 6, qual caminho é o seu?</p>
+      <div class="field-group">
+        <label>Já tenho as milhas para emitir agora?</label>
+        <input type="text" placeholder="Sim / Não — qual programa?" />
+      </div>
+      <div class="field-group">
+        <label>Se não, vou comprar milhas ou monitorar?</label>
+        <input type="text" />
+      </div>
+      <div class="field-group">
+        <label>Quantos meses faltam até a viagem? (define a frequência de monitoramento)</label>
+        <input type="text" />
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 8</span></div>
+      <h2>Vou usar o Viaje Fácil (Smiles)?</h2>
+      <div class="field-group">
+        <label>Faz sentido para a minha viagem?</label>
+        <input type="text" placeholder="Sim / Não — por quê?" />
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 9</span></div>
+      <h2>Disponibilidade na Iberia (se aplicável)</h2>
+      <div class="field-group">
+        <label>Encontrei disponibilidade nas datas pesquisadas?</label>
+        <input type="text" />
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-header"><span class="block-num">Passo 10</span></div>
+      <h2>Produzir e emitir</h2>
+      <div class="field-group">
+        <label>Programa de recompensas onde vou concentrar a produção (Livelo, Esfera, Átomos...)</label>
+        <input type="text" />
+      </div>
+    </div>
+
+    <div class="conclusion-box">
+      <h2>Minha conclusão</h2>
+      <label>Programa escolhido para emitir</label>
+      <input type="text" style="width:100%; margin-bottom:14px; padding:14px 12px; font-size:1rem;" />
+      <label>Por que esse programa é o melhor caminho para a minha viagem</label>
+      <textarea rows="4" style="width:100%;"></textarea>
+    </div>
+
+    <div class="total-time">
+      ⏱ Use este material durante o Bloco 3 (Método dos 10 Passos) e o Bloco 4 (implementação)
+    </div>
+
+  </main>
+
+  <footer>
+    <img src="../assets/logo.png" alt="Imersão Hora de Decolar" class="footer-logo" />
+    Imersão Hora de Decolar · <strong>@eujuntomilhas</strong>
+  </footer>
+
+</body>
+</html>
