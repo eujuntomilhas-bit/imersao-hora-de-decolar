@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/area-da-aluna", "destination": "/pages/area-aluna.html" }
+  ]
+}
